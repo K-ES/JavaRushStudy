@@ -1,3 +1,4 @@
 23.01.2022 Воскресенье
 
 23.01.2022 8:29 Разбор https://javarush.ru/groups/posts/399-skaz-o-dvukh-iteratorakh-strategii-konkurentnoy-modifikacii-v-java-
+23.01.2022 8:53 Разбираюсь, как переменная modCount из AbstractList модифицируется через класс Vector 
