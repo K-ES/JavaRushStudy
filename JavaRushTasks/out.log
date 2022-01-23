@@ -21,3 +21,12 @@
 2022-01-23 07:06:07 INFO  TaskInfoSelectorMouseListener.createDirectoryRecursive(77) - File created :K:/Kes/JRHome/JavaRushTasks/1.JavaSyntax/src/com/javarush/task
 2022-01-23 07:06:07 INFO  TaskInfoSelectorMouseListener.createDirectoryRecursive(77) - File created :K:/Kes/JRHome/JavaRushTasks/1.JavaSyntax/src/com/javarush/task/task01
 2022-01-23 07:06:07 INFO  TaskInfoSelectorMouseListener.createDirectoryRecursive(77) - File created :K:/Kes/JRHome/JavaRushTasks/1.JavaSyntax/src/com/javarush/task/task01/task0142
+2022-01-23 07:07:34 INFO  ApacheHttpClient.getWebResourceAsStream(502) - responseCode = 200
+2022-01-23 07:07:36 INFO  ApacheHttpClient.getFilteredTasks(336) - responseCode = 200
+2022-01-23 07:07:40 INFO  ApacheHttpClient.getFilteredTasks(336) - responseCode = 200
+2022-01-23 07:07:41 INFO  ApacheHttpClient.getTaskTemplateInfo(353) - responseCode = 200
+2022-01-23 07:07:41 INFO  TaskInfoSelectorMouseListener.createDirectoryRecursive(77) - File created :K:/Kes/JRHome/JavaRushTasks/4.JavaCollections/src/com
+2022-01-23 07:07:41 INFO  TaskInfoSelectorMouseListener.createDirectoryRecursive(77) - File created :K:/Kes/JRHome/JavaRushTasks/4.JavaCollections/src/com/javarush
+2022-01-23 07:07:41 INFO  TaskInfoSelectorMouseListener.createDirectoryRecursive(77) - File created :K:/Kes/JRHome/JavaRushTasks/4.JavaCollections/src/com/javarush/task
+2022-01-23 07:07:41 INFO  TaskInfoSelectorMouseListener.createDirectoryRecursive(77) - File created :K:/Kes/JRHome/JavaRushTasks/4.JavaCollections/src/com/javarush/task/task37
+2022-01-23 07:07:41 INFO  TaskInfoSelectorMouseListener.createDirectoryRecursive(77) - File created :K:/Kes/JRHome/JavaRushTasks/4.JavaCollections/src/com/javarush/task/task37/task3701
