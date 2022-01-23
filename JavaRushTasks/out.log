@@ -55,3 +55,10 @@
 2022-01-23 07:15:23 INFO  ApacheHttpClient.getWebResourceAsStream(502) - responseCode = 200
 2022-01-23 07:15:23 INFO  ApacheHttpClient.getTask(488) - responseCode = 200
 2022-01-23 07:15:24 INFO  ApacheHttpClient.completed(32) - responseCode = 200
+2022-01-23 07:24:55 INFO  ProjectStartupHandler.runActivity(74) - ---------- Project opened ----------
+2022-01-23 07:24:55 INFO  ProjectStartupHandler.runActivity(75) - ---------- Version 3.55 ----------
+
+2022-01-23 07:24:55 INFO  ApacheHttpClient.isSessionAppropriateWithSecretKey(602) - Waiting for server response.
+2022-01-23 07:24:55 INFO  ApacheHttpClient.refreshUserInfo(305) - responseCode = 200
+2022-01-23 07:24:55 INFO  ApacheHttpClient.refreshUserInfo(311) - User information received.
+2022-01-23 07:24:55 INFO  ApacheHttpClient.startGA(36) - GAService started.

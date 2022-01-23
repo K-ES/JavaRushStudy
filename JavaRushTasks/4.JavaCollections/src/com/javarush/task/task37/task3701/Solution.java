@@ -32,7 +32,7 @@ public class Solution<T> extends ArrayList<T> {
         return new RoundIterator();
     }
 
-    public class RoundIterator implements Iterator<T> {
+    private class RoundIterator implements Iterator<T> {
         int cursor;       // index of next element to return
         int lastRet = -1; // index of last element returned; -1 if no such
         int expectedModCount = modCount;
