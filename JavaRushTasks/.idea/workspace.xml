@@ -540,26 +540,23 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/4.JavaCollections/src/com/javarush/task/task37/task3701/Solution.java</url>
+          <line>15</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-field">
           <url>jar://C:/Program Files/Java/jdk1.8.0_281/src.zip!/java/util/AbstractList.java</url>
           <line>600</line>
           <properties field="modCount" class="java.util.AbstractList" />
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>jar://C:/Program Files/Java/jdk1.8.0_281/src.zip!/java/util/Vector.java</url>
-          <line>622</line>
-          <properties class="java.util.Vector" method="addElement">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="5" />
+          <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
-        <watch expression="modCount" language="JAVA" />
-        <watch expression="modCount" language="JAVA" />
+        <watch expression="modCount" />
+        <watch expression="index" />
       </configuration>
     </watches-manager>
   </component>
