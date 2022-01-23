@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8a9c2848-0864-419d-ba1c-a0669c6ee00f" name="Default" comment="Тест коммита из Идеи">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4.JavaCollections/src/com/javarush/task/task37/task3701/Solution.java" beforeDir="false" afterPath="$PROJECT_DIR$/4.JavaCollections/src/com/javarush/task/task37/task3701/Solution.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaRushPlugin.properties" beforeDir="false" afterPath="$PROJECT_DIR$/JavaRushPlugin.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Чем занимался/Чем занимался.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out.log" beforeDir="false" afterPath="$PROJECT_DIR$/out.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/4.JavaCollections/com/javarush/task/task37/task3701/Solution$RoundIterator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/4.JavaCollections/com/javarush/task/task37/task3701/Solution$RoundIterator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/4.JavaCollections/com/javarush/task/task37/task3701/Solution.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/4.JavaCollections/com/javarush/task/task37/task3701/Solution.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
