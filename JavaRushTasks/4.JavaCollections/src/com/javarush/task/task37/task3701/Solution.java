@@ -16,8 +16,16 @@ public class Solution<T> extends ArrayList<T> {
         list.add(1);
         list.add(2);
         list.add(3);
+        Iterator<Integer> it = list.iterator();
+        System.out.println("Первый i.next() возвращает: " + it.next());
+        System.out.println("Второй i.next() возвращает: " + it.next());
+        System.out.println("Второй i.next() возвращает: " + it.next());
+        System.out.println("Второй i.next() возвращает: " + it.next());
 
         int count = 0;
+
+
+
         for (Integer i : list) {
             System.out.print(i + " ");
             count++;
@@ -29,7 +37,8 @@ public class Solution<T> extends ArrayList<T> {
 
     @Override
     public Iterator<T> iterator() {
-        return new RoundIterator();
+        return super.iterator();
+//        return new RoundIterator();
     }
 
     private class RoundIterator implements Iterator<T> {
