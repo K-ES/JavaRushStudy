@@ -2,6 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8a9c2848-0864-419d-ba1c-a0669c6ee00f" name="Default" comment="Тест коммита из Идеи">
+      <change afterPath="$PROJECT_DIR$/4.JavaCollections/src/com/javarush/task/task37/task3708/Solution.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4.JavaCollections/src/com/javarush/task/task37/task3708/cache/LRUCache.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4.JavaCollections/src/com/javarush/task/task37/task3708/retrievers/OriginalRetriever.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4.JavaCollections/src/com/javarush/task/task37/task3708/retrievers/Retriever.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4.JavaCollections/src/com/javarush/task/task37/task3708/storage/RemoteStorage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4.JavaCollections/src/com/javarush/task/task37/task3708/storage/Storage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4.JavaCollections/src/com/javarush/task/task37/task3708/Условие.jrtc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/4.JavaCollections/src/com/javarush/task/task37/task3701/Solution.java" beforeDir="false" afterPath="$PROJECT_DIR$/4.JavaCollections/src/com/javarush/task/task37/task3701/Solution.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/JavaRushPlugin.properties" beforeDir="false" afterPath="$PROJECT_DIR$/JavaRushPlugin.properties" afterDir="false" />

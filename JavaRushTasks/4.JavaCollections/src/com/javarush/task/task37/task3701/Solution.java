@@ -63,7 +63,7 @@ public class Solution<T> extends ArrayList<T> {
 
 //            Object[] elementData = ArrayList.this.elementData;
             // TODO надо переписать, т.к. у текущего класса нет такого поля
-            Object[] elementData;
+            Object[] elementData = null;
             try {
                 Field elementDataField = ArrayList.class.getDeclaredField("elementData");
                 elementDataField.setAccessible(true);
@@ -71,9 +71,6 @@ public class Solution<T> extends ArrayList<T> {
 
             } catch (NoSuchFieldException | IllegalAccessException e) {
             }
-
-
-
 
 
             if (i >= elementData.length)
@@ -89,7 +86,7 @@ public class Solution<T> extends ArrayList<T> {
             checkForComodification();
 
             try {
-                ArrayList.this.remove(lastRet);
+                Solution.this.remove(lastRet);
                 cursor = lastRet;
                 lastRet = -1;
                 expectedModCount = modCount;
