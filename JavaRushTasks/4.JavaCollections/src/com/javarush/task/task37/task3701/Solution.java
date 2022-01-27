@@ -1,9 +1,8 @@
 package com.javarush.task.task37.task3701;
 
 import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.ConcurrentModificationException;
-import java.util.Iterator;
+import java.util.*;
+import java.util.function.Consumer;
 
 /* 
 Круговой итератор
@@ -11,6 +10,7 @@ import java.util.Iterator;
 
 public class Solution<T> extends ArrayList<T> {
     public static void main(String[] args) {
+
         System.out.println("Тест коммита");
         Solution<Integer> list = new Solution<>();
         list.add(1);
@@ -37,26 +37,33 @@ public class Solution<T> extends ArrayList<T> {
 
     @Override
     public Iterator<T> iterator() {
-        return super.iterator();
-//        return new RoundIterator();
+//        return super.iterator();
+        return new RoundIterator();
     }
 
-    private class RoundIterator implements Iterator<T> {
+    public class RoundIterator<E> implements Iterator<E> {
         int cursor;       // index of next element to return
         int lastRet = -1; // index of last element returned; -1 if no such
-        int expectedModCount = modCount;
+        int expectedModCount = modCount; // modCount будет меняться "снаружи"
+
+        RoundIterator() {}
 
         public boolean hasNext() {
             return size() > 0;
         }
 
-        public T next() {
+        @SuppressWarnings("unchecked")
+        public E next() {
             checkForComodification();
             int i = cursor;
+
             if (i >= size())
                 i = 0;
-            //private transient Object[] elementData;
-            Object[] elementData = null;
+
+
+//            Object[] elementData = ArrayList.this.elementData;
+            // TODO надо переписать, т.к. у текущего класса нет такого поля
+            Object[] elementData;
             try {
                 Field elementDataField = ArrayList.class.getDeclaredField("elementData");
                 elementDataField.setAccessible(true);
@@ -64,10 +71,16 @@ public class Solution<T> extends ArrayList<T> {
 
             } catch (NoSuchFieldException | IllegalAccessException e) {
             }
+
+
+
+
+
             if (i >= elementData.length)
                 throw new ConcurrentModificationException();
             cursor = i + 1;
-            return (T) elementData[lastRet = i];
+
+            return (E) elementData[lastRet = i];
         }
 
         public void remove() {
@@ -76,7 +89,7 @@ public class Solution<T> extends ArrayList<T> {
             checkForComodification();
 
             try {
-                Solution.this.remove(lastRet);
+                ArrayList.this.remove(lastRet);
                 cursor = lastRet;
                 lastRet = -1;
                 expectedModCount = modCount;
@@ -85,10 +98,31 @@ public class Solution<T> extends ArrayList<T> {
             }
         }
 
+        @Override
+        @SuppressWarnings("unchecked")
+        public void forEachRemaining(Consumer<? super E> consumer) {
+            Objects.requireNonNull(consumer);
+            final int size = ArrayList.this.size;
+            int i = cursor;
+            if (i >= size) {
+                return;
+            }
+            final Object[] elementData = ArrayList.this.elementData;
+            if (i >= elementData.length) {
+                throw new ConcurrentModificationException();
+            }
+            while (i != size && modCount == expectedModCount) {
+                consumer.accept((E) elementData[i++]);
+            }
+            // update once at end of iteration to reduce heap write traffic
+            cursor = i;
+            lastRet = i - 1;
+            checkForComodification();
+        }
+
         final void checkForComodification() {
             if (modCount != expectedModCount)
                 throw new ConcurrentModificationException();
         }
-
     }
 }
