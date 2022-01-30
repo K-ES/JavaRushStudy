@@ -1,0 +1,1 @@
+public class MyExamples01SimpleMultiThreading {    public static void main(String[] args) {        System.out.println("Простой пример многопоточного приложения");        Thread t = new Thread();    }}
