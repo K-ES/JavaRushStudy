@@ -1,2 +1,5 @@
 Вопрос: В чём различие между fail-fast и fail-safe итераторами?
 Ответ: https://javarush.ru/groups/posts/399-skaz-o-dvukh-iteratorakh-strategii-konkurentnoy-modifikacii-v-java-
+
+Особенности TreeMap
+Ответ: https://javarush.ru/groups/posts/2584-osobennosti-treemap
