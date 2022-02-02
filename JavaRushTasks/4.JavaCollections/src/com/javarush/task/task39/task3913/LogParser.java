@@ -3,16 +3,16 @@ package com.javarush.task.task39.task3913;
 import com.javarush.task.task39.task3913.query.IPQuery;
 
 import java.io.*;
-import java.nio.file.DirectoryStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
+import java.nio.file.*;
 import java.text.DateFormat;
+import java.nio.file.attribute.BasicFileAttributes;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class LogParser implements IPQuery {
     Path path;
+    List<Path> listFiles = new ArrayList<>();
     List<LogString> logStrings = new ArrayList<>();
 
     public LogParser(Path path) {
@@ -20,13 +20,23 @@ public class LogParser implements IPQuery {
         
 //        System.out.println("Читаем все логи...");
         File folder = new File(path.toString()); //path указывает на директорию
-        for (File file : folder.listFiles())
-        {
-            System.out.println(file.getName());
+
+        MyVisitor myVisitor = new MyVisitor();
+        try {
+            Files.walkFileTree(Paths.get(path.toString()), myVisitor);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+//        System.out.println("Список полученных файлов: " + listFiles);
+
+        for (int i = 0; i < listFiles.size(); i++) {
 //            System.out.println("Считываем очередной файл...");
+//            System.out.println(listFiles.get(i).toString());
+
+            File file = new File(listFiles.get(i).toString());
             BufferedReader br;
             try {
-                br = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
+                br = new BufferedReader(new InputStreamReader(new FileInputStream(listFiles.get(i).toString())));
                 String line = new String();
                 while( ( line = br.readLine() ) != null ) {
 //                    System.out.println("Очередная строка: " + line);
@@ -40,25 +50,33 @@ public class LogParser implements IPQuery {
         }
 
 //        System.out.println("Анализ списка объектов...");
-//        System.out.println(logStrings.size());
-//        System.out.println(logStrings.get(0));
-//        System.out.println(logStrings.get(1));
-//        System.out.println(logStrings.get(2));
+//        for (int i = 0; i < logStrings.size(); i++) {
+//            System.out.println(logStrings.get(i));
+//        }
     }
 
     @Override
     public int getNumberOfUniqueIPs(Date after, Date before) {
-        Set<String> setUniqueIPs = new HashSet<>();
-        for (int i = 0; i < logStrings.size(); i++) {
-            System.out.println(logStrings.get(i).ip);
-            setUniqueIPs.add(logStrings.get(i).ip);
-        }
-        return setUniqueIPs.size();
+        return getUniqueIPs(after, before).size();
     }
 
     @Override
     public Set<String> getUniqueIPs(Date after, Date before) {
-        return null;
+        Set<String> setUniqueIPs = new HashSet<>();
+        for (int i = 0; i < logStrings.size(); i++) {
+            Date date = logStrings.get(i).date;
+//            System.out.println("Анализируем дату: " + date);
+            boolean addFlag = false;
+            if (
+                    (after == null ? true : date.compareTo(after) >= 0)
+                    &&
+                    (before == null ? true : date.compareTo(before) <= 0)
+
+            )
+                setUniqueIPs.add(logStrings.get(i).ip);
+
+        }
+        return setUniqueIPs;
     }
 
     @Override
@@ -80,6 +98,7 @@ public class LogParser implements IPQuery {
         String ip;
         String user;
         String dateString;
+        Date date;
         Event event;
         Long number;
         Status status;
@@ -92,7 +111,12 @@ public class LogParser implements IPQuery {
             user = massString[parNumber++];
             dateString = massString[parNumber++];
 
-
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat ("dd.MM.yy HH:mm:ss");
+            try {
+                date = simpleDateFormat.parse(dateString);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
 
             String[] massOneTask = massString[parNumber++].split(" ");
             event = Event.valueOf(massOneTask[0]);
@@ -108,10 +132,22 @@ public class LogParser implements IPQuery {
                     "ip='" + ip + '\'' +
                     ", user='" + user + '\'' +
                     ", dateString='" + dateString + '\'' +
+                    ", date='" + date + '\'' +
                     ", event=" + event +
                     ", number=" + number +
                     ", status=" + status +
                     '}';
+        }
+    }
+
+    private class MyVisitor extends SimpleFileVisitor<Path> {
+        @Override
+        public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
+//            System.out.println("Очередной путь: " + file.getFileName());
+            if (Files.isRegularFile(file) && file.getFileName().toString().endsWith(".log")) {
+                listFiles.add(file);
+            }
+            return super.visitFile(file, attrs);
         }
     }
 }
