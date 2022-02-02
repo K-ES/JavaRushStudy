@@ -2,57 +2,25 @@ package com.javarush.task.task39.task3913;
 
 import com.javarush.task.task39.task3913.query.IPQuery;
 
-import java.io.*;
-import java.nio.file.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.nio.file.DirectoryStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.text.DateFormat;
-import java.nio.file.attribute.BasicFileAttributes;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class LogParser implements IPQuery {
-    Path path;
-    List<Path> listFiles = new ArrayList<>();
-    List<LogString> logStrings = new ArrayList<>();
+    private Path logDir;
+    private List<LogEntity> logEntities = new ArrayList<>();
+    private DateFormat simpleDateFormat = new SimpleDateFormat("d.M.yyyy H:m:s");
 
-    public LogParser(Path path) {
-        this.path = path;
-        
-//        System.out.println("Читаем все логи...");
-        File folder = new File(path.toString()); //path указывает на директорию
-
-        MyVisitor myVisitor = new MyVisitor();
-        try {
-            Files.walkFileTree(Paths.get(path.toString()), myVisitor);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-//        System.out.println("Список полученных файлов: " + listFiles);
-
-        for (int i = 0; i < listFiles.size(); i++) {
-//            System.out.println("Считываем очередной файл...");
-//            System.out.println(listFiles.get(i).toString());
-
-            File file = new File(listFiles.get(i).toString());
-            BufferedReader br;
-            try {
-                br = new BufferedReader(new InputStreamReader(new FileInputStream(listFiles.get(i).toString())));
-                String line = new String();
-                while( ( line = br.readLine() ) != null ) {
-//                    System.out.println("Очередная строка: " + line);
-                    logStrings.add(new LogString(line));
-                }
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-//        System.out.println("Анализ списка объектов...");
-//        for (int i = 0; i < logStrings.size(); i++) {
-//            System.out.println(logStrings.get(i));
-//        }
+    public LogParser(Path logDir) {
+        this.logDir = logDir;
+        readLogs();
     }
 
     @Override
@@ -62,92 +30,200 @@ public class LogParser implements IPQuery {
 
     @Override
     public Set<String> getUniqueIPs(Date after, Date before) {
-        Set<String> setUniqueIPs = new HashSet<>();
-        for (int i = 0; i < logStrings.size(); i++) {
-            Date date = logStrings.get(i).date;
-//            System.out.println("Анализируем дату: " + date);
-            boolean addFlag = false;
-            if (
-                    (after == null ? true : date.compareTo(after) >= 0)
-                    &&
-                    (before == null ? true : date.compareTo(before) <= 0)
-
-            )
-                setUniqueIPs.add(logStrings.get(i).ip);
-
+        Set<String> result = new HashSet<>();
+        for (int i = 0; i < logEntities.size(); i++) {
+            if (dateBetweenDates(logEntities.get(i).getDate(), after, before)) {
+                result.add(logEntities.get(i).getIp());
+            }
         }
-        return setUniqueIPs;
+        return result;
     }
 
     @Override
     public Set<String> getIPsForUser(String user, Date after, Date before) {
-        return null;
+        Set<String> result = new HashSet<>();
+        for (int i = 0; i < logEntities.size(); i++) {
+            if (dateBetweenDates(logEntities.get(i).getDate(), after, before)) {
+                if (logEntities.get(i).getUser().equals(user)) {
+                    result.add(logEntities.get(i).getIp());
+                }
+            }
+        }
+        return result;
     }
 
     @Override
     public Set<String> getIPsForEvent(Event event, Date after, Date before) {
-        return null;
+        Set<String> result = new HashSet<>();
+        for (int i = 0; i < logEntities.size(); i++) {
+            if (dateBetweenDates(logEntities.get(i).getDate(), after, before)) {
+                if (logEntities.get(i).getEvent().equals(event)) {
+                    result.add(logEntities.get(i).getIp());
+                }
+            }
+        }
+        return result;
     }
 
     @Override
     public Set<String> getIPsForStatus(Status status, Date after, Date before) {
-        return null;
+        Set<String> result = new HashSet<>();
+        for (int i = 0; i < logEntities.size(); i++) {
+            if (dateBetweenDates(logEntities.get(i).getDate(), after, before)) {
+                if (logEntities.get(i).getStatus().equals(status)) {
+                    result.add(logEntities.get(i).getIp());
+                }
+            }
+        }
+        return result;
     }
 
-    class LogString {
-        String ip;
-        String user;
-        String dateString;
-        Date date;
-        Event event;
-        Long number;
-        Status status;
+    private void readLogs() {
+        try (DirectoryStream<Path> directoryStream = Files.newDirectoryStream(logDir)) {
+            for (Path file : directoryStream) {
+                if (file.toString().toLowerCase().endsWith(".log")) {
+                    try (BufferedReader reader = new BufferedReader(new FileReader(file.toFile()))) {
+                        String line = null;
+                        while ((line = reader.readLine()) != null) {
+                            String[] params = line.split("\t");
 
-        public LogString(String fullString) {
-            String[] massString = fullString.split("\t");
+                            if (params.length != 5) {
+                                continue;
+                            }
 
-            int parNumber = 0;
-            ip = massString[parNumber++];
-            user = massString[parNumber++];
-            dateString = massString[parNumber++];
+                            String ip = params[0];
+                            String user = params[1];
+                            Date date = readDate(params[2]);
+                            Event event = readEvent(params[3]);
+                            int eventAdditionalParameter = -1;
+                            if (event.equals(Event.SOLVE_TASK) || event.equals(Event.DONE_TASK)) {
+                                eventAdditionalParameter = readAdditionalParameter(params[3]);
+                            }
+                            Status status = readStatus(params[4]);
 
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat ("dd.MM.yy HH:mm:ss");
-            try {
-                date = simpleDateFormat.parse(dateString);
-            } catch (ParseException e) {
-                e.printStackTrace();
+                            LogEntity logEntity = new LogEntity(ip, user, date, event, eventAdditionalParameter, status);
+                            logEntities.add(logEntity);
+                        }
+                    }
+                }
             }
-
-            String[] massOneTask = massString[parNumber++].split(" ");
-            event = Event.valueOf(massOneTask[0]);
-            if (event == Event.SOLVE_TASK || event == Event.DONE_TASK) {
-                number = Long.parseLong(massOneTask[1]);
-            }
-            status = Status.valueOf(massString[parNumber++]);
-        }
-
-        @Override
-        public String toString() {
-            return "LogString{" +
-                    "ip='" + ip + '\'' +
-                    ", user='" + user + '\'' +
-                    ", dateString='" + dateString + '\'' +
-                    ", date='" + date + '\'' +
-                    ", event=" + event +
-                    ", number=" + number +
-                    ", status=" + status +
-                    '}';
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
-    private class MyVisitor extends SimpleFileVisitor<Path> {
-        @Override
-        public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
-//            System.out.println("Очередной путь: " + file.getFileName());
-            if (Files.isRegularFile(file) && file.getFileName().toString().endsWith(".log")) {
-                listFiles.add(file);
+    private Date readDate(String lineToParse) {
+        Date date = null;
+        try {
+            date = simpleDateFormat.parse(lineToParse);
+        } catch (ParseException e) {
+        }
+        return date;
+    }
+
+    private Event readEvent(String lineToParse) {
+        Event event = null;
+        if (lineToParse.contains("SOLVE_TASK")) {
+            event = Event.SOLVE_TASK;
+        } else if (lineToParse.contains("DONE_TASK")) {
+            event = Event.DONE_TASK;
+        } else {
+            switch (lineToParse) {
+                case "LOGIN": {
+                    event = Event.LOGIN;
+                    break;
+                }
+                case "DOWNLOAD_PLUGIN": {
+                    event = Event.DOWNLOAD_PLUGIN;
+                    break;
+                }
+                case "WRITE_MESSAGE": {
+                    event = Event.WRITE_MESSAGE;
+                    break;
+                }
             }
-            return super.visitFile(file, attrs);
+        }
+        return event;
+    }
+
+    private int readAdditionalParameter(String lineToParse) {
+        if (lineToParse.contains("SOLVE_TASK")) {
+            lineToParse = lineToParse.replace("SOLVE_TASK", "").replaceAll(" ", "");
+            return Integer.parseInt(lineToParse);
+        } else {
+            lineToParse = lineToParse.replace("DONE_TASK", "").replaceAll(" ", "");
+            return Integer.parseInt(lineToParse);
+        }
+    }
+
+    private Status readStatus(String lineToParse) {
+        Status status = null;
+        switch (lineToParse) {
+            case "OK": {
+                status = Status.OK;
+                break;
+            }
+            case "FAILED": {
+                status = Status.FAILED;
+                break;
+            }
+            case "ERROR": {
+                status = Status.ERROR;
+                break;
+            }
+        }
+        return status;
+    }
+
+    private boolean dateBetweenDates(Date current, Date after, Date before) {
+        if (after == null) {
+            after = new Date(0);
+        }
+        if (before == null) {
+            before = new Date(Long.MAX_VALUE);
+        }
+        return current.after(after) && current.before(before);
+    }
+
+    private class LogEntity {
+        private String ip;
+        private String user;
+        private Date date;
+        private Event event;
+        private int eventAdditionalParameter;
+        private Status status;
+
+        public LogEntity(String ip, String user, Date date, Event event, int eventAdditionalParameter, Status status) {
+            this.ip = ip;
+            this.user = user;
+            this.date = date;
+            this.event = event;
+            this.eventAdditionalParameter = eventAdditionalParameter;
+            this.status = status;
+        }
+
+        public String getIp() {
+            return ip;
+        }
+
+        public String getUser() {
+            return user;
+        }
+
+        public Date getDate() {
+            return date;
+        }
+
+        public Event getEvent() {
+            return event;
+        }
+
+        public int getEventAdditionalParameter() {
+            return eventAdditionalParameter;
+        }
+
+        public Status getStatus() {
+            return status;
         }
     }
 }
