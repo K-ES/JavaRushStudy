@@ -23,11 +23,12 @@ public class HHStrategy implements Strategy {
         int page = 0;
         try {
             do {
+                if (page == 40) break;
                 Document doc = getDocument(searchString, page);
 
                 System.out.println("Попытка найти Лист");
-                Elements vacanciesHtmlList = doc.getElementsByAttributeValue("data-qa", "vacancy-serp__vacancy");
-//                Elements vacanciesHtmlList = doc.getElementsByClass("vacancy-serp-item");
+//                Elements vacanciesHtmlList = doc.getElementsByAttributeValue("data-qa", "vacancy-serp__vacancy");
+                Elements vacanciesHtmlList = doc.getElementsByClass("vacancy-serp-item");
                 System.out.println("Количество элементов в Листе: " + vacanciesHtmlList.size());
 
                 if (vacanciesHtmlList.isEmpty()) break;
@@ -43,7 +44,10 @@ public class HHStrategy implements Strategy {
                     vacancy.setTitle(links.get(0).text());
                     vacancy.setUrl(links.get(0).attr("href"));
                     vacancy.setCity(locations.get(0).text());
-                    vacancy.setCompanyName(companyName.get(0).text());
+                    try {
+                        vacancy.setCompanyName(companyName.get(0).text());
+                    } catch (IndexOutOfBoundsException e) {
+                    }
                     vacancy.setSalary(salary.size() > 0 ? salary.get(0).text() : "");
 
                     allVacancies.add(vacancy);
