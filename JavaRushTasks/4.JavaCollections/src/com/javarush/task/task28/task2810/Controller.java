@@ -26,8 +26,25 @@ public class Controller {
     public void scan() {
         List<Vacancy> vacancies = new ArrayList<>();
         for (Provider provider : providers) {
-            vacancies.addAll(provider.getJavaVacancies("MyTown"));
+            vacancies.addAll(provider.getJavaVacancies("Kiev"));
         }
-        System.out.println(vacancies.size());
+
+        for (int i = 0; i < vacancies.size(); i++) {
+            System.out.println(vacancies.get(i).getTitle());
+            System.out.println(vacancies.get(i).getSalary());
+            System.out.println(vacancies.get(i).getCity());
+            System.out.println(vacancies.get(i).getCompanyName());
+            System.out.println(vacancies.get(i).getSiteName());
+            System.out.println(vacancies.get(i).getUrl());
+            System.out.println("");
+        }
+//        private String title;
+//        private String salary;
+//        private String city;
+//        private String companyName;
+//        private String siteName;
+//        private String url;
+        
+        
     }
 }
