@@ -7,26 +7,6 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <context:property-placeholder location="classpath:musicPlayer.properties"/>
-
-    <bean id="musicBean"
-          class="ru.krivonogov.springexample.ClassicalMusic"
-          scope="singleton"
-          init-method="doMyInit"
-          destroy-method="doByDestroy"
-    factory-method="getClassicalMusic">
-    </bean>
-
-
-    <bean id="musicPlayer"
-          class="ru.krivonogov.springexample.MusicPlayer"
-          scope="prototype">
-
-        <property name="music" ref="musicBean"/>
-
-        <property name="name" value="${musicPlayer.name}"/>
-        <property name="volume" value="${musicPlayer.volume}"/>
-
-    </bean>
+    <context:component-scan base-package="ru.krivonogov.springexample"></context:component-scan>
 
 </beans>

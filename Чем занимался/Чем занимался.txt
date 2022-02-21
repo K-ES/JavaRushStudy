@@ -28,6 +28,9 @@
 21.02.2022 06:23 Прохожу видео курс по Spring https://www.youtube.com/playlist?list=PLAma_mKffTOR5o0WNHnY0mTjKxnCgSXrZ
 21.02.2022 06:24 Отвлекся на Аннотации 
 21.02.2022 06:55 Вернулся к Spring-курсу
+21.02.2022 07:29 Аннотация @Component
+21.02.2022 08:58 Начал щупать @Autowired
+
 
 
 
