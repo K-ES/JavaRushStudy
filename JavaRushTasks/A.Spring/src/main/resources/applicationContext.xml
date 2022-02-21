@@ -11,8 +11,10 @@
 
     <bean id="musicBean"
           class="ru.krivonogov.springexample.ClassicalMusic"
+          scope="singleton"
           init-method="doMyInit"
-          destroy-method="doByDestroy">
+          destroy-method="doByDestroy"
+    factory-method="getClassicalMusic">
     </bean>
 
 
