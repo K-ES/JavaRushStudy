@@ -16,9 +16,41 @@ public class FirstController {
     public String helloPage(@RequestParam(value = "name", required = false) String name1, @RequestParam(value = "surname", required = false) String surname1, Model model) {
 
 //        System.out.println("Hi, " + name1 + " " + surname1);
-        model.addAttribute("message","Hi, " + name1 + " " + surname1 );
+        model.addAttribute("message", "Hi, " + name1 + " " + surname1);
 
         return "first/hello";
+    }
+
+
+    @GetMapping("/calculator")
+    public String calculatorPage(@RequestParam(value = "a", required = false) String a1,
+                                 @RequestParam(value = "b", required = false) String b1,
+                                 @RequestParam(value = "action", required = false) String action1, Model model) {
+
+        System.out.println("a1" + a1);
+        System.out.println("b1" + b1);
+        System.out.println("action1" + action1);
+
+        String result ="";
+
+        switch (action1) {
+            case ("multiplication"):
+                result = String.valueOf(Integer.parseInt(a1) * Integer.parseInt(b1));
+                break;
+            case ("addition"):
+                result = String.valueOf(Integer.parseInt(a1) + Integer.parseInt(b1));
+                break;
+            case ("subtraction"):
+                result = String.valueOf(Integer.parseInt(a1) - Integer.parseInt(b1));
+                break;
+            case ("division"):
+                result = String.valueOf(Integer.parseInt(a1) / Integer.parseInt(b1));
+                break;
+        }
+
+        model.addAttribute("operation_result", result);
+
+        return "first/calculator";
     }
 
     @GetMapping("/goodbye")
