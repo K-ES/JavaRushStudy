@@ -31,3 +31,17 @@ h2 {
     /*text-transform: capitalize;*/
     letter-spacing: 15px;
 }
+
+.container {
+    max-width: 750px;
+    margin: auto;
+}
+
+/* Mox Bodel */
+.social {
+    background:  green;
+    padding: 0px;
+    border: 5px solid red;
+    margin: 20px;
+}
+
