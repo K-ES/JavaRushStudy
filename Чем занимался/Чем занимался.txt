@@ -1,3 +1,4 @@
+06.04.2022 07:52 Изучаю цикл статей про EE Часть 1. Что нужно знать перед изучением Spring и JavaEE
 06.03.2022 07:31 Разбираем зависимость javax.servlet-api. Пауза. Ушел в Сервлеты
 06.03.2022 05:51 Java EE для начинающих: https://www.youtube.com/playlist?list=PLAma_mKffTOTTFqIkLXgHqVuL6xJhb0mr
 06.03.2022 05:39 https://stackoverflow.com/questions/2619598/differences-between-dependencymanagement-and-dependencies-in-maven
