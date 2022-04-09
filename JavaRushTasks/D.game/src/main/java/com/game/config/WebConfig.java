@@ -2,6 +2,7 @@ package com.game.config;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -17,12 +18,16 @@ import org.springframework.web.servlet.view.JstlView;
 
 import java.util.List;
 
+//@Configuration - класс содержит Бины
+
 @Configuration
 @EnableWebMvc
 @ComponentScan("com.game")
 public class WebConfig implements WebMvcConfigurer {
 
-
+    /**
+      Изучаю этот метод
+     */
     @Bean
     public ViewResolver internalResourceViewResolver() {
         InternalResourceViewResolver bean = new InternalResourceViewResolver();
