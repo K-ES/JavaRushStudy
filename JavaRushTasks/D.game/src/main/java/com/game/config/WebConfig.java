@@ -33,13 +33,13 @@ public class WebConfig implements WebMvcConfigurer {
 
      */
     @Bean
-    public ViewResolver internalResourceViewResolver() {
-        InternalResourceViewResolver bean = new InternalResourceViewResolver();
-        bean.setViewClass(JstlView.class);
-        bean.setPrefix("/WEB-INF/");
-        bean.setSuffix(".jsp");
-        return bean;
-    }
+//    public ViewResolver internalResourceViewResolver() {
+//        InternalResourceViewResolver bean = new InternalResourceViewResolver();
+//        bean.setViewClass(JstlView.class);
+//        bean.setPrefix("/WEB-INF/");
+//        bean.setSuffix(".jsp");
+//        return bean;
+//    }
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
