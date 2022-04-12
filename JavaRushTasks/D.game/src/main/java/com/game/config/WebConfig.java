@@ -20,13 +20,17 @@ import java.util.List;
 
 //@Configuration - класс содержит Бины
 
+// три этих аннотации соответсвуют простейшему варианту из документации
+// https://www.baeldung.com/spring-mvc-view-resolver-tutorial
 @Configuration
 @EnableWebMvc
 @ComponentScan("com.game")
 public class WebConfig implements WebMvcConfigurer {
 
     /**
-      Изучаю этот метод
+     Изучаю этот метод
+     Хорошо описано тут: https://www.baeldung.com/spring-mvc-view-resolver-tutorial
+
      */
     @Bean
     public ViewResolver internalResourceViewResolver() {
