@@ -1,3 +1,4 @@
+12.04.2022 06:35 Переключился на ViewResolver internalResourceViewResolver
 	12.04.2022 06:06 Вернулся к аннотации @Import
 	09.04.2022 07:05 В слер раз начать с изучения аннотации @Import
 	09.04.2022 06:58 В дальнейшем изучу по статье https://sysout.ru/componentscan-v-springbootapplication-annotatsiya-import/
