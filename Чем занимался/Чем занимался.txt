@@ -1,6 +1,6 @@
-
 		
-13.04.2022 07:35 MIMT-типы. https://www.youtube.com/watch?v=ABOXpjFNnyg
+13.04.2022 08:03 HTTP рядом лежало. Тоже решил глянуть. Все нормально, ничего нового :) https://www.youtube.com/watch?v=Qq50zHT8jFE&list=PLUTrDHuvZc4EmdrTctvd2UUZRJqqjXLWG&index=1
+13.04.2022 07:35 MIME-типы. https://www.youtube.com/watch?v=ABOXpjFNnyg
 13.04.2022 07:03 Читаю про MappingJackson2HttpMessageConverter https://www.baeldung.com/spring-httpmessageconverter-rest 
 13.04.2022 07:03 https://www.baeldung.com/java-pojo-class Очень классно написано про JavaBeans 
 13.04.2022 06:53 configureMessageConverters Появилась необходимость почитать про POJO https://www.baeldung.com/java-pojo-class
