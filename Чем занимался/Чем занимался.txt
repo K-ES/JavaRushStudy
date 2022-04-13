@@ -1,21 +1,22 @@
-	13.04.2022 06:18 Победил кодировку по этой статье: https://stackoverflow.com/questions/35231291/intellij-idea-incorrect-encoding-in-console-output
-	13.04.2022 05:59 Поехали бороться с tomcat. 
-	12.04.2022 08:52 Хочу победить кодировку вывода в консоль информации о запуске tomcat
-	12.04.2022 08:36 Расскоментил все зависимости, сейчас буду изучать WebConfig.java через дебаг.
-		
-	12.04.2022 08:00 Появилось понимание, зачем нужен ViewResolver
-		Не на всё есть детальное описание в документации. Некоторые вещи придется щупать через debug. 
-		В след раз буду запускать приложение и щупать через дебаг отключение всех методов. Иначе пока сложно по документации 
-		
-	12.04.2022 06:35 Переключился на ViewResolver internalResourceViewResolver (https://www.baeldung.com/spring-mvc-view-resolver-tutorial)
-		12.04.2022 06:06 Вернулся к аннотации @Import
-		09.04.2022 07:05 В слер раз начать с изучения аннотации @Import
-		09.04.2022 06:58 В дальнейшем изучу по статье https://sysout.ru/componentscan-v-springbootapplication-annotatsiya-import/
-		09.04.2022 06:54 Необходимо изучить аннотацию @Import, т.к. она используется в @EnableWebMvc
-	09.04.2022 06:24 Снова переключился на @EnableWebMvc
-	09.04.2022 06:11 Изучаю public ViewResolver internalResourceViewResolver()
-09.04.2022 06:00 Раскапываю WebConfig.java
 
+		
+13.04.2022 06:53 configureMessageConverters Появилась необходимость почитать про POJO https://www.baeldung.com/java-pojo-class
+13.04.2022 06:20 Вернулся к анализу WebConfig через дебаг
+13.04.2022 06:18 Победил кодировку по этой статье: https://stackoverflow.com/questions/35231291/intellij-idea-incorrect-encoding-in-console-output
+13.04.2022 05:59 Поехали бороться с tomcat. 
+12.04.2022 08:52 Хочу победить кодировку вывода в консоль информации о запуске tomcat
+12.04.2022 08:36 Расскоментил все зависимости, сейчас буду изучать WebConfig.java через дебаг.	
+12.04.2022 08:00 Появилось понимание, зачем нужен ViewResolver
+	Не на всё есть детальное описание в документации. Некоторые вещи придется щупать через debug. 
+	В след раз буду запускать приложение и щупать через дебаг отключение всех методов. Иначе пока сложно по документации 	
+12.04.2022 06:35 Переключился на ViewResolver internalResourceViewResolver (https://www.baeldung.com/spring-mvc-view-resolver-tutorial)
+12.04.2022 06:06 Вернулся к аннотации @Import
+09.04.2022 07:05 В слер раз начать с изучения аннотации @Import
+09.04.2022 06:58 В дальнейшем изучу по статье https://sysout.ru/componentscan-v-springbootapplication-annotatsiya-import/
+09.04.2022 06:54 Необходимо изучить аннотацию @Import, т.к. она используется в @EnableWebMvc
+09.04.2022 06:24 Снова переключился на @EnableWebMvc
+09.04.2022 06:11 Изучаю public ViewResolver internalResourceViewResolver()
+09.04.2022 06:00 Раскапываю WebConfig.java
 08.04.2022 07:24 Пощупал удаление и добавление зависимости  		<artifactId>spring-webmvc</artifactId>
 08.04.2022 03:54 Успешно сломал проект. Ща буду аккуратно добавлять нужные зависимости. 
 08.04.2022 03:33 Вернулся в разбор pom.xml. Важно понять каждую зависимость.

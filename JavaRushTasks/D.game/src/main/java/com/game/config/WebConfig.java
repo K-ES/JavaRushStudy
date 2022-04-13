@@ -30,22 +30,26 @@ public class WebConfig implements WebMvcConfigurer {
     /**
      Изучаю этот метод
      Хорошо описано тут: https://www.baeldung.com/spring-mvc-view-resolver-tutorial
-
+     Еще лучще описано тут. https://javastudy.ru/spring-mvc/spring-mvc-viewresolver/
+     ViewResolver по строке возвращает представление, т.е. страница. например по index вернет
+     /WEB-INF/views/index.jsp.
      */
     @Bean
-//    public ViewResolver internalResourceViewResolver() {
-//        InternalResourceViewResolver bean = new InternalResourceViewResolver();
-//        bean.setViewClass(JstlView.class);
-//        bean.setPrefix("/WEB-INF/");
-//        bean.setSuffix(".jsp");
-//        return bean;
-//    }
+    public ViewResolver internalResourceViewResolver() {
+        InternalResourceViewResolver bean = new InternalResourceViewResolver();
+        bean.setViewClass(JstlView.class);
+        bean.setPrefix("/WEB-INF/");
+        bean.setSuffix(".jsp");
+        return bean;
+    }
 
+    // все запросы будут нас вести на страницу index
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/").setViewName("index");
     }
 
+    // стандартное добавление ресурсов ничего интересного
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
