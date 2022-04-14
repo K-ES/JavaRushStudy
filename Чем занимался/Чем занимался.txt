@@ -1,4 +1,6 @@
-		
+14.04.2022 05:48 Вернулся MappingJackson2HttpMessageConverter
+13.04.2022 08:54 В целом стало ясно по статье https://www.baeldung.com/spring-httpmessageconverter-rest, как примерно использовать конвертер. 
+                 Надо будет завтра немного сам Jackson снова порыть. 15
 13.04.2022 08:03 HTTP рядом лежало. Тоже решил глянуть. Все нормально, ничего нового :) https://www.youtube.com/watch?v=Qq50zHT8jFE&list=PLUTrDHuvZc4EmdrTctvd2UUZRJqqjXLWG&index=1
 13.04.2022 07:35 MIME-типы. https://www.youtube.com/watch?v=ABOXpjFNnyg
 13.04.2022 07:03 Читаю про MappingJackson2HttpMessageConverter https://www.baeldung.com/spring-httpmessageconverter-rest 
