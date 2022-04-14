@@ -1,7 +1,7 @@
 14.04.2022 06:
 14.04.2022 06:
 14.04.2022 06:
-14.04.2022 06:
+14.04.2022 06:39 Разбираю MyWebAppInit extends AbstractAnnotationConfigDispatcherServletInitializer
 14.04.2022 06:37 Завершил разбор WebConfig.java
 14.04.2022 07:34 Пришлось снова окунуться в jackson в обучение JavaRush и остальное.
                  Как раз тут хорошо разжевано. https://stackoverflow.com/questions/7105745/how-to-specify-jackson-to-only-use-fields-preferably-globally
