@@ -55,6 +55,12 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
     }
 
+    /*
+    * 14.04.2022 07:34 Пришлось снова окунуться в jackson в обучение JavaRush и остальное.
+                 Как раз тут хорошо разжевано. https://stackoverflow.com/questions/7105745/how-to-specify-jackson-to-only-use-fields-preferably-globally
+				 Смысл в том, чтобы при сериализации сделать настройку, чтобы сериализовались только понял. Без методов.
+
+    * */
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
         MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
