@@ -1,3 +1,11 @@
+15.04.2022 07
+15.04.2022 07
+15.04.2022 07
+15.04.2022 07
+15.04.2022 07
+15.04.2022 07:10 Все равно вернулся в теорию. Копаю различия SOAP и REST
+                 Очень хорошая статья: https://systems.education/soap-integration
+				 
 15.04.2022 06:48 Просто сохранил ссылку в OneNote на все вопросы по сервелетам: 
                  https://github.com/enhorse/java-interview/blob/master/README.md#servlets-jsp-jstl
 				 Буду заглядывать при необходимости.
