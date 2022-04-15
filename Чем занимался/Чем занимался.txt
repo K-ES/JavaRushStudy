@@ -1,4 +1,7 @@
-14.04.2022 06:
+15.04.2022 06:48 Просто сохранил ссылку в OneNote на все вопросы по сервелетам: 
+                 https://github.com/enhorse/java-interview/blob/master/README.md#servlets-jsp-jstl
+				 Буду заглядывать при необходимости.
+15.04.2022 06:20 Возвращаюсь к MyWebAppInit. Есть разные способы инициализации. Разберу один конкретный, чтобы двигаться дальше.
 14.04.2022 07:54 После нескольких ссылок решил уйти в поиск вопросов (собеседование) по RestFull и тд.
 14.04.2022 07:50 Ушел в это видео: https://www.youtube.com/watch?v=V0einMcOr2M&list=PLzGpabGCCU1utUy2yzEvwq9oOkjymSmfb&index=11
 14.04.2022 06:39 Разбираю MyWebAppInit extends AbstractAnnotationConfigDispatcherServletInitializer
