@@ -1,5 +1,22 @@
 
 
+
+2022-04-18 07:58:49 https://javarush.ru/help/81869 Создал вопрос. Но почти сам уже разобрался. Завтра продолжу. 
+2022-04-18 07:23:37 Ушел в анализ создания объекта mockMvc. Пока вообще не понимаю, как он создается. 
+					@Before
+					public void setup() {
+						mockMvc = MockMvcBuilders
+								.webAppContextSetup(context)
+								.addFilter(((request, response, chain) -> {
+									response.setCharacterEncoding("UTF-8");
+									chain.doFilter(request, response);
+								}))
+								.build();
+					}					
+2022-04-18 06:54:41 Снова ушел в аннотации @Sql(scripts = "classpath:test.sql", config = @SqlConfig(encoding = "UTF-8"))
+					Изучаю, как в скобках передавать параметры и что они означают.
+2022-04-18 06:37:25 Изучаю Аннотацию RunWith. Начал с этого: https://habr.com/ru/post/120101/
+2022-04-18 06:34:38 Настроил на питоне скрипт для ввода текущих даты и времени для удобного логирования
 18.04.2022 05:23 На разные профили настроены разные базы данных. Изучаю как работать с профилями Spring https://youtu.be/Wm6CDoI6Jps?t=527
 					не смог победить настройку профилей в Idea. Не работает так же как на видео. Забил.
 				 
