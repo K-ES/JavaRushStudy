@@ -1,3 +1,9 @@
+2022-04-19 07:48:48 Начал разбирать реализацию теста но споткнулся на первом статическом импорте. Оказывается, можно импортировать статические члены классов
+					ResultActions resultActions = mockMvc.perform(get("/rest/players"))
+					Копал этот get, не мог понять, откуда он взялся и почему его можно так вызывать. 
+					Далее заметил в импорте: import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+					Объяснение тут: https://pro-java.ru/java-dlya-nachinayushhix/staticheskij-import-v-yazyke-java/
+					С завтрашнего дня начну с этой статьи. 
 2022-04-19 07:23:52 По уроку от Алишева вспомнил, как замутить контроллер: https://www.youtube.com/watch?v=JHTqKQgrVKE&list=PLAma_mKffTOR5o0WNHnY0mTjKxnCgSXrZ&index=17&t=146s
 2022-04-19 06:59:26 Модифицировал один тетс. Убрал все лишнее. Сейчас буду добиваться его успшеной проверки.
 2022-04-19 06:45:04 Перестал копать класс AbastractText
