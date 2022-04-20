@@ -114,7 +114,7 @@ public class UpdatePlayerTest extends AbstractTest {
         String contentAsString = resultActions.andReturn().getResponse().getContentAsString();
         PlayerInfoTest actual = mapper.readValue(contentAsString, PlayerInfoTest.class);
 
-        assertEquals("При запросе POST /rest/players/{id} с пустым телом запроса, корабль не должен изменяться", expected, actual);
+        assertEquals("При запросе POST /rest/players/{id} с пустым телом запроса, игрок не должен изменяться", expected, actual);
     }
 
     //test9
@@ -179,6 +179,6 @@ public class UpdatePlayerTest extends AbstractTest {
         String contentAsString = resultActions.andReturn().getResponse().getContentAsString();
         PlayerInfoTest actual = mapper.readValue(contentAsString, PlayerInfoTest.class);
 
-        assertEquals("При запросе POST /rest/players/{id} корабль должен обновляться и рейтинг пересчитываться", expected, actual);
+        assertEquals("При запросе POST /rest/players/{id} игрок должен обновляться и рейтинг пересчитываться", expected, actual);
     }
 }

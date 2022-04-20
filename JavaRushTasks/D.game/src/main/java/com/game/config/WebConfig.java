@@ -2,7 +2,6 @@ package com.game.config;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -18,22 +17,12 @@ import org.springframework.web.servlet.view.JstlView;
 
 import java.util.List;
 
-//@Configuration - класс содержит Бины
-
-// три этих аннотации соответсвуют простейшему варианту из документации
-// https://www.baeldung.com/spring-mvc-view-resolver-tutorial
 @Configuration
 @EnableWebMvc
 @ComponentScan("com.game")
 public class WebConfig implements WebMvcConfigurer {
 
-    /**
-     Изучаю этот метод
-     Хорошо описано тут: https://www.baeldung.com/spring-mvc-view-resolver-tutorial
-     Еще лучще описано тут. https://javastudy.ru/spring-mvc/spring-mvc-viewresolver/
-     ViewResolver по строке возвращает представление, т.е. страница. например по index вернет
-     /WEB-INF/views/index.jsp.
-     */
+
     @Bean
     public ViewResolver internalResourceViewResolver() {
         InternalResourceViewResolver bean = new InternalResourceViewResolver();
@@ -43,24 +32,16 @@ public class WebConfig implements WebMvcConfigurer {
         return bean;
     }
 
-    // все запросы будут нас вести на страницу index
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/").setViewName("index");
     }
 
-    // стандартное добавление ресурсов ничего интересного
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
     }
 
-    /*
-    * 14.04.2022 07:34 Пришлось снова окунуться в jackson в обучение JavaRush и остальное.
-                 Как раз тут хорошо разжевано. https://stackoverflow.com/questions/7105745/how-to-specify-jackson-to-only-use-fields-preferably-globally
-				 Смысл в том, чтобы при сериализации сделать настройку, чтобы сериализовались только понял. Без методов.
-
-    * */
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
         MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
