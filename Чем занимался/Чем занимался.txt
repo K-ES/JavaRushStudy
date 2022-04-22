@@ -1,3 +1,8 @@
+2022-04-22 07:42:05 Т.к. я приступил к новому объекту, надо о нем как следует почитать. 
+					http://dolszewski.com/spring/spring-boot-application-properties-file/
+					https://docs.spring.io/spring-boot/docs/current/reference/html/application-properties.html
+					При этом пока не вижу некоторых пропертись в описанных примерах. Сначала перечитаю примеры. Затем остальные свойства буду искать.
+
 
 2022-04-22 07:35:18 PlayerRepository создан. Ничего сложного. Дальше прихожу к application.properties
 2022-04-22 07:10:32 Вроде по Player норм. Теперь создаю класс PlayerRepositry.
