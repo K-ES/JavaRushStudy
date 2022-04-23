@@ -1,3 +1,4 @@
+2022-04-23 05:39:06 Поехали снова читать про application.properties
 2022-04-22 07:42:05 Т.к. я приступил к новому объекту, надо о нем как следует почитать. 
 					http://dolszewski.com/spring/spring-boot-application-properties-file/
 					https://docs.spring.io/spring-boot/docs/current/reference/html/application-properties.html
