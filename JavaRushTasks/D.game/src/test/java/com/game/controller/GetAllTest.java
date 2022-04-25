@@ -6,11 +6,13 @@ import com.game.entity.Profession;
 import com.game.entity.Race;
 import com.game.controller.utils.PlayerInfoTest;
 import com.game.controller.utils.TestsHelper;
+import org.apache.log4j.LogManager;
 import org.junit.Test;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.ResultActions;
 import org.apache.log4j.Logger;
+
 
 import java.util.List;
 
@@ -19,6 +21,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 public class GetAllTest extends AbstractTest {
+    static final Logger rootLogger = LogManager.getRootLogger();
+    static final Logger userLogger = LogManager.getLogger(GetAllTest.class);
 
     private final TestsHelper testsHelper = new TestsHelper();
     private final ObjectMapper mapper = new ObjectMapper();
@@ -28,6 +32,13 @@ public class GetAllTest extends AbstractTest {
     //test1
     @Test
     public void getAllWithoutFiltersReturnAllPlayers() throws Exception {
+        System.out.println("Тест1");
+
+        rootLogger.info("Это информационное сообщение1");
+        userLogger.info("Это информационное сообщение2");
+
+
+        System.out.println("Тест2");
 //        ResultActions resultActions = mockMvc.perform(get("/rest/players")).andExpect(status().isOk());
         ResultActions resultActions = mockMvc.perform(get("/rest/players")).andExpect(status().is5xxServerError());
 
