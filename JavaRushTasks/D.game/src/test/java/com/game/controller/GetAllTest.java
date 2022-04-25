@@ -10,6 +10,7 @@ import org.junit.Test;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.ResultActions;
+import org.apache.log4j.Logger;
 
 import java.util.List;
 
@@ -27,8 +28,8 @@ public class GetAllTest extends AbstractTest {
     //test1
     @Test
     public void getAllWithoutFiltersReturnAllPlayers() throws Exception {
-        ResultActions resultActions = mockMvc.perform(get("/rest/players")).andExpect(status().isOk());
-//        ResultActions resultActions = mockMvc.perform(get("/rest/players")).andExpect(status().is5xxServerError());
+//        ResultActions resultActions = mockMvc.perform(get("/rest/players")).andExpect(status().isOk());
+        ResultActions resultActions = mockMvc.perform(get("/rest/players")).andExpect(status().is5xxServerError());
 
         MvcResult result = resultActions.andReturn();
         String contentAsString = result.getResponse().getContentAsString();
