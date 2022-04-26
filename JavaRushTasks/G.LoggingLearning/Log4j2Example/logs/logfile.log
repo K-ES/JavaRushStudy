@@ -1,0 +1,45 @@
+2022-04-26 06:05:50.654 [main] INFO  MainClass - раз
+2022-04-26 06:05:50.655 [main] INFO  MainClass - два
+2022-04-26 06:05:50.655 [main] FATAL MainClass - fatal
+2022-04-26 06:05:50.655 [main] ERROR MainClass - error
+2022-04-26 06:05:50.655 [main] INFO   - три
+%{basePattern}%{basePattern}%{basePattern}%{basePattern}%{basePattern}2022-04-26 06:07:24.657 [main] INFO  MainClass - раз
+2022-04-26 06:07:24.657 [main] INFO  MainClass - два
+2022-04-26 06:07:24.658 [main] FATAL MainClass - fatal
+2022-04-26 06:07:24.658 [main] ERROR MainClass - error
+2022-04-26 06:07:24.658 [main] INFO   - три
+2022-04-26 06:07:42.319 [main] INFO  MainClass - раз
+2022-04-26 06:07:42.320 [main] INFO  MainClass - два
+2022-04-26 06:07:42.321 [main] FATAL MainClass - fatal
+2022-04-26 06:07:42.321 [main] ERROR MainClass - error
+2022-04-26 06:07:42.321 [main] INFO   - три
+2022-04-26 06:07:58.404 [main] INFO  MainClass - раз
+2022-04-26 06:07:58.405 [main] INFO  MainClass - два
+2022-04-26 06:07:58.405 [main] FATAL MainClass - fatal
+2022-04-26 06:07:58.405 [main] ERROR MainClass - error
+2022-04-26 06:07:58.405 [main] INFO   - три
+2022-04-26 06:08:06.125 [main] INFO  MainClass - раз
+2022-04-26 06:08:06.126 [main] INFO  MainClass - два
+2022-04-26 06:08:06.126 [main] FATAL MainClass - fatal
+2022-04-26 06:08:06.126 [main] ERROR MainClass - error
+2022-04-26 06:08:06.126 [main] INFO   - три
+2022-04-26 06:08:37.050 [main] INFO  MainClass - раз
+2022-04-26 06:08:37.051 [main] INFO  MainClass - два
+2022-04-26 06:08:37.051 [main] FATAL MainClass - fatal
+2022-04-26 06:08:37.051 [main] ERROR MainClass - error
+2022-04-26 06:08:37.052 [main] INFO   - три
+2022-04-26 06:08:46.671 [main] INFO  MainClass - раз
+2022-04-26 06:08:46.672 [main] INFO  MainClass - два
+2022-04-26 06:08:46.672 [main] FATAL MainClass - fatal
+2022-04-26 06:08:46.672 [main] ERROR MainClass - error
+2022-04-26 06:08:46.672 [main] INFO   - три
+2022-04-26 06:08:50.349 [main] INFO  MainClass - раз
+2022-04-26 06:08:50.350 [main] INFO  MainClass - два
+2022-04-26 06:08:50.350 [main] FATAL MainClass - fatal
+2022-04-26 06:08:50.350 [main] ERROR MainClass - error
+2022-04-26 06:08:50.350 [main] INFO   - три
+2022-04-26 06:09:21.738 [main] INFO  MainClass - раз
+2022-04-26 06:09:21.739 [main] INFO  MainClass - два
+2022-04-26 06:09:21.739 [main] FATAL MainClass - fatal
+2022-04-26 06:09:21.739 [main] ERROR MainClass - error
+2022-04-26 06:09:21.740 [main] INFO   - три

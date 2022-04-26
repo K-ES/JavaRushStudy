@@ -10,6 +10,8 @@ public class MainClass {
 
         userLogger.info("раз");
         userLogger.info("два");
+        userLogger.fatal("fatal");
+        userLogger.error("error");
 
         rootLogger.info("три");
 
