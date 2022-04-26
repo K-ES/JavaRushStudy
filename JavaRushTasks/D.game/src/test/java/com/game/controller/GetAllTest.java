@@ -33,6 +33,8 @@ public class GetAllTest extends AbstractTest {
 
         rootLogger.info("info");
         MvcResult result = resultActions.andReturn();
+        // TODO реализовать возврат красивого JSON
+
         String contentAsString = result.getResponse().getContentAsString();
 
 
