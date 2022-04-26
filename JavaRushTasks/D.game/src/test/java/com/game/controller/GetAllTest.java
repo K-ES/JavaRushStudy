@@ -13,6 +13,7 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.List;
 
+import static org.springframework.test.util.AssertionErrors.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -27,25 +28,22 @@ public class GetAllTest extends AbstractTest {
     //test1
     @Test
     public void getAllWithoutFiltersReturnAllPlayers() throws Exception {
-        System.out.println("Тест1");
+        ResultActions resultActions = mockMvc.perform(get("/rest/players")).andExpect(status().isOk());
+//        ResultActions resultActions = mockMvc.perform(get("/rest/players")).andExpect(status().is5xxServerError());
+
         rootLogger.info("info");
-        rootLogger.debug("debug");
-        rootLogger.fatal("fatal");
-        rootLogger.trace("trace");
-        rootLogger.error("error");
-
-        System.out.println("Тест2");
-//        ResultActions resultActions = mockMvc.perform(get("/rest/players")).andExpect(status().isOk());
-        ResultActions resultActions = mockMvc.perform(get("/rest/players")).andExpect(status().is5xxServerError());
-
         MvcResult result = resultActions.andReturn();
         String contentAsString = result.getResponse().getContentAsString();
 
-//
-//        List<PlayerInfoTest> actual = mapper.readValue(contentAsString, typeReference);
-//        List<PlayerInfoTest> expected = testsHelper.getPlayerInfosByPage(0, 3,
-//                testsHelper.getAllPlayers());
-//        assertEquals("Возвращается не правильный результат при запросе GET /rest/players.", expected, actual);
+
+        try {
+            List<PlayerInfoTest> actual = mapper.readValue(contentAsString, typeReference);
+            List<PlayerInfoTest> expected = testsHelper.getPlayerInfosByPage(0, 3,
+                    testsHelper.getAllPlayers());
+            assertEquals("Возвращается не правильный результат при запросе GET /rest/players.", expected, actual);
+        } catch (Exception e) {
+            rootLogger.error(e.getMessage());
+        }
     }
 /*
     //test2
