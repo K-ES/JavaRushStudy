@@ -1,3 +1,12 @@
+2022-04-27 07:06:46 Хитрая ситуация. Сначала я столкнулся с ворнингом в логах, которые показывали следующее:
+					SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+					Я пошел в подключенные библиотеки по проекту. И удалил библиотеку SLF4J. После этого проект перестал собираться из-за ошибки
+					2022-04-27 07:01:15.783 [main] ERROR org.springframework.test.context.TestContextManager - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@30c93896] to prepare test instance [com.game.controller.GetAllTest@75201592]
+					java.lang.NoClassDefFoundError: org/slf4j/LoggerFactory
+					Таким образом в классе org.springframework.test.context.TestContextManager есть зависимость на SLF4J. 
+					И мне надо уйти в логирование SLF4J, чтобы дальше спокойно разбираться.
+
+
 2022-04-26 07:22:25 Окончание сессии. В след раз начать с возврата красивого Json
 2022-04-26 07:09:21 Настроил подстветку лога в Notepadd++ ухожу в корректировку метода
 2022-04-26 06:51:07 Если раскомментировать остальнео логирование, то лог перестает работать. 

@@ -20,6 +20,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class GetAllTest extends AbstractTest {
     static final Logger rootLogger = LogManager.getRootLogger();
 
+
     private final TestsHelper testsHelper = new TestsHelper();
     private final ObjectMapper mapper = new ObjectMapper();
     private final TypeReference<List<PlayerInfoTest>> typeReference = new TypeReference<List<PlayerInfoTest>>() {
@@ -28,14 +29,16 @@ public class GetAllTest extends AbstractTest {
     //test1
     @Test
     public void getAllWithoutFiltersReturnAllPlayers() throws Exception {
+        rootLogger.info("getAllWithoutFiltersReturnAllPlayers Start");
+
         ResultActions resultActions = mockMvc.perform(get("/rest/players")).andExpect(status().isOk());
 //        ResultActions resultActions = mockMvc.perform(get("/rest/players")).andExpect(status().is5xxServerError());
 
-        rootLogger.info("info");
         MvcResult result = resultActions.andReturn();
         // TODO реализовать возврат красивого JSON
 
         String contentAsString = result.getResponse().getContentAsString();
+        rootLogger.fatal(contentAsString);
 
 
         try {
