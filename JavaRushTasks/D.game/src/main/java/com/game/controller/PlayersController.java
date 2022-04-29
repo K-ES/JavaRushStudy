@@ -21,7 +21,7 @@ public class PlayersController {
     @GetMapping("/players")
     @ResponseBody
     public String helloPage() {
-        return "Тестовая строчечка";
+        return playerService.listAll().toString();
     }
 //
 //    @RequestMapping("/players")

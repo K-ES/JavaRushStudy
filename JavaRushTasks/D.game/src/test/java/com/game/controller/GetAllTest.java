@@ -34,11 +34,15 @@ public class GetAllTest extends AbstractTest {
         ResultActions resultActions = mockMvc.perform(get("/rest/players")).andExpect(status().isOk());
 //        ResultActions resultActions = mockMvc.perform(get("/rest/players")).andExpect(status().is5xxServerError());
 
+        rootLogger.info("перед resultActions.andReturn()");
         MvcResult result = resultActions.andReturn();
         // TODO реализовать возврат красивого JSON
 
+
+
+        rootLogger.info("перед result.getResponse().getContentAsString()");
         String contentAsString = result.getResponse().getContentAsString();
-        rootLogger.fatal(contentAsString);
+        rootLogger.info("contentAsString: " + contentAsString);
 
 
         try {
