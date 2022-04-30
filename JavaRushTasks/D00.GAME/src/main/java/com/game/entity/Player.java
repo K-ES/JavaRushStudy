@@ -11,13 +11,6 @@ public class Player {
     private Long id;
     private String name;
     private String title;
-    private Race race;
-    private Profession profession;
-    private Integer experience;
-    private Integer level;
-    private Integer untilNextLevel;
-    private Date birthday;
-    private Boolean banned;
 
     public Player() {
     }
@@ -34,34 +27,6 @@ public class Player {
         this.title = title;
     }
 
-    public void setRace(Race race) {
-        this.race = race;
-    }
-
-    public void setProfession(Profession profession) {
-        this.profession = profession;
-    }
-
-    public void setExperience(Integer experience) {
-        this.experience = experience;
-    }
-
-    public void setLevel(Integer level) {
-        this.level = level;
-    }
-
-    public void setUntilNextLevel(Integer untilNextLevel) {
-        this.untilNextLevel = untilNextLevel;
-    }
-
-    public void setBirthday(Date birthday) {
-        this.birthday = birthday;
-    }
-
-    public void setBanned(Boolean banned) {
-        this.banned = banned;
-    }
-
     public Long getId() {
         return id;
     }
@@ -74,31 +39,5 @@ public class Player {
         return title;
     }
 
-    public Race getRace() {
-        return race;
-    }
 
-    public Profession getProfession() {
-        return profession;
-    }
-
-    public Integer getExperience() {
-        return experience;
-    }
-
-    public Integer getLevel() {
-        return level;
-    }
-
-    public Integer getUntilNextLevel() {
-        return untilNextLevel;
-    }
-
-    public Date getBirthday() {
-        return birthday;
-    }
-
-    public Boolean getBanned() {
-        return banned;
-    }
 }
