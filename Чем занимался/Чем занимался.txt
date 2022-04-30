@@ -1,4 +1,4 @@
-	
+2022-04-30 06:57:14 Продолжаем разбираться с ошибкой.	
 2022-04-29 06:52:46 Разбираюсь с 
 					2022-04-29 06:51:43.523 [main] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper - Ошибка преобразования данных при конвертации "ROGUE"
 					Data conversion error converting "ROGUE" [22018-200]
