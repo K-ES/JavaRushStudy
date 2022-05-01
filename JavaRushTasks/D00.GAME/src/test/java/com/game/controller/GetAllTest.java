@@ -38,12 +38,10 @@ public class GetAllTest extends AbstractTest {
         MvcResult result = resultActions.andReturn();
         // TODO реализовать возврат красивого JSON
 
-
-
         rootLogger.info("перед result.getResponse().getContentAsString()");
         String contentAsString = result.getResponse().getContentAsString();
+//        String contentAsString = "[{\"id\":1,\"name\":\"Ниус\",\"title\":\"Приходящий Без Шума\",\"race\":\"HOBBIT\"},{\"id\":2,\"name\":\"Никрашш\",\"title\":\"НайтВульф\",\"race\":\"ORC\"},{\"id\":3,\"name\":\"Эззэссэль\",\"title\":\"шипящая\",\"race\":\"DWARF\"}]";
         rootLogger.info("contentAsString: " + contentAsString);
-
 
         try {
             List<PlayerInfoTest> actual = mapper.readValue(contentAsString, typeReference);

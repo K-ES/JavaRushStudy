@@ -1,9 +1,7 @@
 package com.game.entity;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import java.util.Date;
 
 @Entity
 public class Player {
@@ -11,6 +9,7 @@ public class Player {
     private Long id;
     private String name;
     private String title;
+    private String race;
 
     public Player() {
     }
@@ -39,5 +38,11 @@ public class Player {
         return title;
     }
 
+    public String getRace() {
+        return race;
+    }
 
+    public void setRace(String race) {
+        this.race = race;
+    }
 }
