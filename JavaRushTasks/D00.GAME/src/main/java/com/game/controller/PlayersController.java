@@ -45,7 +45,9 @@ public class PlayersController {
         //преобразовываем все записанное во StringWriter в строку
 
         rootLogger.info("result helloPate(): " + writer.toString());
-        return  writer.toString();
+//        return  writer.toString();
+        String contentAsString = "[{\"id\":1,\"name\":\"Ниус1\",\"title\":\"Приходящий Без Шума\",\"race\":\"HOBBIT\"},{\"id\":2,\"name\":\"Никрашш\",\"title\":\"НайтВульф\",\"race\":\"ORC\"},{\"id\":3,\"name\":\"Эззэссэль\",\"title\":\"шипящая\",\"race\":\"DWARF\"}]";
+        return contentAsString;
     }
 
 }
