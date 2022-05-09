@@ -27,16 +27,7 @@ public class PlayersController {
     @GetMapping("/players")
     @ResponseBody
     public List<Player> helloPage() {
-        List<Player> listPlayer =  playerService.listAll();
-//        StringWriter writer = new StringWriter();
-//        ObjectMapper mapper = new ObjectMapper();
-//        try {
-//            mapper.writeValue(writer, listPlayer);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        rootLogger.info("result helloPate(): " + writer.toString());
-        return  listPlayer;
+        return  playerService.listAll();
     }
 
 }
