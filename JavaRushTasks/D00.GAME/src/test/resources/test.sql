@@ -14,4 +14,4 @@ CREATE TABLE player
 INSERT INTO player(name, title, race)
 VALUES ('Ниус', 'Приходящий Без Шума', 'HOBBIT')
      , ('Никрашш', 'НайтВульф', 'ORC')
-     , ('Эззэссэль', 'шипящая', 'CLERIC');
+     , ('Эззэссэль', 'шипящая', 'DWARF');

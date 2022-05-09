@@ -48,10 +48,7 @@ public class GetAllTest extends AbstractTest {
             rootLogger.info(Arrays.stream(actual.toArray()).toArray());
             List<PlayerInfoTest> expected = testsHelper.getPlayerInfosByPage(0, 3,
                     testsHelper.getAllPlayers());
-            rootLogger.info("1");
         assertEquals("Возвращается не правильный результат при запросе GET /rest/players.", expected, actual);
-        assertEquals("Проверка", 1, 2);
-            rootLogger.info("2");
 //        } catch (Exception e) {
 //            rootLogger.error(e.getMessage());
 //        }

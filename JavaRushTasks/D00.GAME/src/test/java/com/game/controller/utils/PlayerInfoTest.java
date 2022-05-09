@@ -67,6 +67,6 @@ public class PlayerInfoTest {
                 "id=" + id +
                 ", name='" + name +
                 ", race='" + race +
-                '}';
+                "'}";
     }
 }
