@@ -25,28 +25,17 @@ public class PlayersController {
     private PlayerService playerService;
 
     @GetMapping("/players")
-    public @ResponseBody List<Player> helloPage() {
+    public @ResponseBody String helloPage() {
         List<Player> listPlayer =  playerService.listAll();
-
-        //писать результат сериализации будем во Writer(StringWriter)
         StringWriter writer = new StringWriter();
-
-        //это объект Jackson, который выполняет сериализацию
         ObjectMapper mapper = new ObjectMapper();
-
-        // сама сериализация: 1-куда, 2-что
         try {
             mapper.writeValue(writer, listPlayer);
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        //преобразовываем все записанное во StringWriter в строку
-
         rootLogger.info("result helloPate(): " + writer.toString());
-        return  listPlayer;
-//        String contentAsString = "[{\"id\":1,\"name\":\"Ниус1\",\"title\":\"Приходящий Без Шума\",\"race\":\"HOBBIT\"},{\"id\":2,\"name\":\"Никрашш\",\"title\":\"НайтВульф\",\"race\":\"ORC\"},{\"id\":3,\"name\":\"Эззэссэль\",\"title\":\"шипящая\",\"race\":\"DWARF\"}]";
-//        return contentAsString;
+        return  writer.toString();
     }
 
 }
