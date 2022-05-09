@@ -25,17 +25,18 @@ public class PlayersController {
     private PlayerService playerService;
 
     @GetMapping("/players")
-    public @ResponseBody String helloPage() {
+    @ResponseBody
+    public List<Player> helloPage() {
         List<Player> listPlayer =  playerService.listAll();
-        StringWriter writer = new StringWriter();
-        ObjectMapper mapper = new ObjectMapper();
-        try {
-            mapper.writeValue(writer, listPlayer);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        rootLogger.info("result helloPate(): " + writer.toString());
-        return  writer.toString();
+//        StringWriter writer = new StringWriter();
+//        ObjectMapper mapper = new ObjectMapper();
+//        try {
+//            mapper.writeValue(writer, listPlayer);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        rootLogger.info("result helloPate(): " + writer.toString());
+        return  listPlayer;
     }
 
 }
