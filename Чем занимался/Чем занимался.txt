@@ -1,3 +1,4 @@
+2022-05-11 06:23:58 Изучил POSTMAN. Простестил https://reqres.in/. Полет нормальный. Ухожу обратно в свою задачу.
 2022-05-11 05:27:28 https://github.com/K-ES/JRHome/issues/7
 					Изучить POSTMAN
 
