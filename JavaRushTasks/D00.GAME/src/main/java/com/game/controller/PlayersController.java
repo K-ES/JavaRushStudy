@@ -29,5 +29,4 @@ public class PlayersController {
     public List<Player> helloPage() {
         return  playerService.listAll();
     }
-
 }
