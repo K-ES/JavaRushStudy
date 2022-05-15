@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.io.IOException;
@@ -26,7 +27,9 @@ public class PlayersController {
 
     @GetMapping("/players")
     @ResponseBody
-    public List<Player> helloPage() {
+    public List<Player> helloPage(@RequestParam(defaultValue = "0") Long pageNumber, @RequestParam(defaultValue = "3") Long pageSize) {
+        rootLogger.info("pageNumber: " + pageNumber);
+        rootLogger.info("pageSize: " + pageSize);
         return  playerService.listAll();
     }
 }
