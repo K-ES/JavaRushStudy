@@ -212,7 +212,7 @@ public class TestsHelper {
         return result;
     }
 
-/*    public List<PlayerInfoTest> getPlayerInfosByProfession(Profession profession, List<PlayerInfoTest> players) {
+    public List<PlayerInfoTest> getPlayerInfosByProfession(Profession profession, List<PlayerInfoTest> players) {
         List<PlayerInfoTest> result = new ArrayList<>();
         for (PlayerInfoTest player : players) {
             if (player.profession == profession) {
@@ -291,7 +291,7 @@ public class TestsHelper {
         }
         return result;
     }
-*/
+
     public List<PlayerInfoTest> getPlayerInfosByPage(Integer pageNumber, Integer pageSize, List<PlayerInfoTest> players) {
         int skip = pageNumber * pageSize;
         List<PlayerInfoTest> result = new ArrayList<>();
