@@ -7,9 +7,11 @@ import com.game.service.PlayerService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.io.IOException;
@@ -26,7 +28,9 @@ public class PlayersController {
 
     @GetMapping("/players")
     @ResponseBody
-    public List<Player> helloPage() {
-        return  playerService.listAll();
+    public Page<Player> helloPage(@RequestParam(defaultValue = "0") int pageNumber, @RequestParam(defaultValue = "3") int pageSize) {
+        rootLogger.info("pageNumber: " + pageNumber);
+        rootLogger.info("pageSize: " + pageSize);
+        return playerService.listWithPagination(pageNumber,pageSize);
     }
 }

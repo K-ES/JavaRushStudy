@@ -13,7 +13,7 @@ public class PlayerInfoTest {
     public String name;
     public String title;
     public Race race;
-//    public Profession profession;
+    public Profession profession;
 //    public Long birthday;
 //    public Boolean banned;
 //    public Integer experience;
