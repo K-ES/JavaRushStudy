@@ -1,3 +1,5 @@
+2022-05-16 07:57:20 Окончание сессии.
+2022-05-16 07:57:03 Хочется разобраться с TypeReference<List<PlayerInfoTest>>. 
 2022-05-16 07:37:26 Копаю. List<PlayerInfoTest> actual = mapper.readValue(contentAsString, typeReference);
 2022-05-16 07:24:02 Откатил в том числе тестовый класс
 2022-05-16 07:18:22 Установил Beyong Compare. Он взлетает из Get Extension. 
