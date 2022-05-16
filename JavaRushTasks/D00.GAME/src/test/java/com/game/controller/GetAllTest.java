@@ -2,16 +2,15 @@ package com.game.controller;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.game.entity.Profession;
+import com.game.entity.Race;
 import com.game.controller.utils.PlayerInfoTest;
 import com.game.controller.utils.TestsHelper;
 import org.junit.Test;
+import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.ResultActions;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
-
-import java.util.Arrays;
 import java.util.List;
 
 import static org.springframework.test.util.AssertionErrors.assertEquals;
@@ -19,8 +18,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 public class GetAllTest extends AbstractTest {
-    static final Logger rootLogger = LogManager.getRootLogger();
-
 
     private final TestsHelper testsHelper = new TestsHelper();
     private final ObjectMapper mapper = new ObjectMapper();
@@ -30,30 +27,18 @@ public class GetAllTest extends AbstractTest {
     //test1
     @Test
     public void getAllWithoutFiltersReturnAllPlayers() throws Exception {
-        rootLogger.info("getAllWithoutFiltersReturnAllPlayers Start");
+        ResultActions resultActions = mockMvc.perform(get("/rest/players"))
+                .andExpect(status().isOk());
 
-        ResultActions resultActions = mockMvc.perform(get("/rest/players")).andExpect(status().isOk());
-//        ResultActions resultActions = mockMvc.perform(get("/rest/players")).andExpect(status().is5xxServerError());
-
-        rootLogger.info("перед resultActions.andReturn()");
         MvcResult result = resultActions.andReturn();
-        // TODO реализовать возврат красивого JSON
+        String contentAsString = result.getResponse().getContentAsString();
 
-        rootLogger.info("перед result.getResponse().getContentAsString()");
-      String contentAsString = result.getResponse().getContentAsString();
-        rootLogger.info("contentAsString: " + contentAsString);
-
-//        try {
-            List<PlayerInfoTest> actual = mapper.readValue(contentAsString, typeReference);
-            rootLogger.info(Arrays.stream(actual.toArray()).toArray());
-            List<PlayerInfoTest> expected = testsHelper.getPlayerInfosByPage(0, 3,
-                    testsHelper.getAllPlayers());
+        List<PlayerInfoTest> actual = mapper.readValue(contentAsString, typeReference);
+        List<PlayerInfoTest> expected = testsHelper.getPlayerInfosByPage(0, 3,
+                testsHelper.getAllPlayers());
         assertEquals("Возвращается не правильный результат при запросе GET /rest/players.", expected, actual);
-//        } catch (Exception e) {
-//            rootLogger.error(e.getMessage());
-//        }
     }
-/*
+
     //test2
     @Test
     public void getAllWithFiltersNamePageNumber() throws Exception {
@@ -187,6 +172,4 @@ public class GetAllTest extends AbstractTest {
 
         assertEquals("Возвращается не правильный результат при запросе GET /rest/players с параметрами after, before, minExperience и maxExperience.", expected, actual);
     }
-
- */
 }
