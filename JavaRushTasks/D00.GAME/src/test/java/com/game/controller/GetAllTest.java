@@ -11,6 +11,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.springframework.test.util.AssertionErrors.assertEquals;
@@ -38,21 +39,19 @@ public class GetAllTest extends AbstractTest {
         MvcResult result = resultActions.andReturn();
         // TODO реализовать возврат красивого JSON
 
-
-
         rootLogger.info("перед result.getResponse().getContentAsString()");
-        String contentAsString = result.getResponse().getContentAsString();
+      String contentAsString = result.getResponse().getContentAsString();
         rootLogger.info("contentAsString: " + contentAsString);
 
-
-        try {
+//        try {
             List<PlayerInfoTest> actual = mapper.readValue(contentAsString, typeReference);
+            rootLogger.info(Arrays.stream(actual.toArray()).toArray());
             List<PlayerInfoTest> expected = testsHelper.getPlayerInfosByPage(0, 3,
                     testsHelper.getAllPlayers());
-            assertEquals("Возвращается не правильный результат при запросе GET /rest/players.", expected, actual);
-        } catch (Exception e) {
-            rootLogger.error(e.getMessage());
-        }
+        assertEquals("Возвращается не правильный результат при запросе GET /rest/players.", expected, actual);
+//        } catch (Exception e) {
+//            rootLogger.error(e.getMessage());
+//        }
     }
 /*
     //test2
