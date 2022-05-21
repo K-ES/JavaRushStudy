@@ -1,9 +1,9 @@
 public class Dog {
     public String name;
-    Dog(){}
+//    Dog(){}
 
-    @Override
-    public String toString() {
-        return getClass().getName() + " " + name;
-    }
+//    @Override
+//    public String toString() {
+//        return getClass().getName() + " " + name;
+//    }
 }
