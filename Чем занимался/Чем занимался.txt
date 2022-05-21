@@ -1,3 +1,5 @@
+2022-05-21 07:52:07 Закончил шерстение статьи https://northcoder.com/post/jackson-object-mapper-which-way-is/. Вроде все понятно.
+2022-05-21 07:51:42 Снова глянул про анонимные классы. Освежил в памяти https://youtu.be/ndnubpPzkNE
 2022-05-21 06:17:17 Закончил изучать кошечек и собачек, вернулся к реальному TypeReference
 2022-05-21 05:51:45 Повторение на базе этой лекции. https://javarush.ru/quests/lectures/questcollections.level03.lecture03
 2022-05-21 05:34:53 Поехали
