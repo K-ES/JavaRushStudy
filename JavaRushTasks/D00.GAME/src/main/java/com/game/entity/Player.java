@@ -10,6 +10,7 @@ public class Player {
     private String name;
     private String title;
     private String race;
+    private Profession profession;
 
     public Player() {
     }
@@ -44,5 +45,13 @@ public class Player {
 
     public void setRace(String race) {
         this.race = race;
+    }
+
+    public Profession getProfession() {
+        return profession;
+    }
+
+    public void setProfession(Profession profession) {
+        this.profession = profession;
     }
 }
