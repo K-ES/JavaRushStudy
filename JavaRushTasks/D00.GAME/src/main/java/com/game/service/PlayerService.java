@@ -24,8 +24,8 @@ public class PlayerService {
         return (List<Player>) repo.findAll();
     }
 
-    public List<Player> listWithPagination(int pageNumber, int pageSize) {
-        return repo.findAll(PageRequest.of(pageNumber,pageSize)).getContent();
+    public Page<Player> listWithPagination(int pageNumber, int pageSize) {
+        return repo.findAll(PageRequest.of(pageNumber,pageSize));
     }
 
     public Player get(Long id) {

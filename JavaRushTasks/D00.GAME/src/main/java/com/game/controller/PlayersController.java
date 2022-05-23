@@ -31,6 +31,6 @@ public class PlayersController {
     public List<Player> helloPage(@RequestParam(defaultValue = "0") int pageNumber, @RequestParam(defaultValue = "3") int pageSize) {
         rootLogger.info("pageNumber: " + pageNumber);
         rootLogger.info("pageSize: " + pageSize);
-        return playerService.listWithPagination(pageNumber,pageSize);
+        return playerService.listWithPagination(pageNumber,pageSize).getContent();
     }
 }
