@@ -28,7 +28,7 @@ public class PlayersController {
 
     @GetMapping("/players")
     @ResponseBody
-    public Page<Player> helloPage(@RequestParam(defaultValue = "0") int pageNumber, @RequestParam(defaultValue = "3") int pageSize) {
+    public List<Player> helloPage(@RequestParam(defaultValue = "0") int pageNumber, @RequestParam(defaultValue = "3") int pageSize) {
         rootLogger.info("pageNumber: " + pageNumber);
         rootLogger.info("pageSize: " + pageSize);
         return playerService.listWithPagination(pageNumber,pageSize);
