@@ -10,7 +10,7 @@ public class Player {
     private String name;
     private String title;
     private String race;
-    private Profession profession;
+    private String profession;
 
     public Player() {
     }
@@ -47,11 +47,11 @@ public class Player {
         this.race = race;
     }
 
-    public Profession getProfession() {
+    public String getProfession() {
         return profession;
     }
 
-    public void setProfession(Profession profession) {
+    public void setProfession(String profession) {
         this.profession = profession;
     }
 }
