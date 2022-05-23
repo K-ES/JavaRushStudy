@@ -1,6 +1,8 @@
 package com.game.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
 
 @Entity
@@ -10,7 +12,8 @@ public class Player {
     private String name;
     private String title;
     private String race;
-    private String profession;
+    @Enumerated(EnumType.STRING)
+    private Profession profession;
 
     public Player() {
     }
@@ -47,11 +50,11 @@ public class Player {
         this.race = race;
     }
 
-    public String getProfession() {
+    public Profession getProfession() {
         return profession;
     }
 
-    public void setProfession(String profession) {
+    public void setProfession(Profession profession) {
         this.profession = profession;
     }
 }
