@@ -3,6 +3,8 @@ package com.game.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.game.dao.PlayerDAO;
 import com.game.entity.Player;
+import com.game.entity.Profession;
+import com.game.entity.Race;
 import com.game.service.PlayerService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -28,9 +30,34 @@ public class PlayersController {
 
     @GetMapping("/players")
     @ResponseBody
-    public List<Player> helloPage(@RequestParam(defaultValue = "0") int pageNumber, @RequestParam(defaultValue = "3") int pageSize) {
+    public List<Player> helloPage(@RequestParam String name,
+                                  @RequestParam String title,
+                                  @RequestParam Race race,
+                                  @RequestParam Profession profession,
+                                  @RequestParam Long after,
+                                  @RequestParam Long before,
+                                  @RequestParam Boolean banned,
+                                  @RequestParam Integer minExperience,
+                                  @RequestParam Integer maxExperience,
+                                  @RequestParam Integer minLevel,
+                                  @RequestParam Integer maxLevel,
+                                  @RequestParam PlayerOrder order,
+                                  @RequestParam(defaultValue = "0") int pageNumber,
+                                  @RequestParam(defaultValue = "3") int pageSize) {
+        rootLogger.info("name: " + name);
+        rootLogger.info("title: " + title);
+        rootLogger.info("race: " + race);
+        rootLogger.info("profession: " + profession);
+        rootLogger.info("after: " + after);
+        rootLogger.info("before: " + before);
+        rootLogger.info("banned: " + banned);
+        rootLogger.info("minExperience: " + minExperience);
+        rootLogger.info("maxExperience: " + maxExperience);
+        rootLogger.info("minLevel: " + minLevel);
+        rootLogger.info("maxLevel: " + maxLevel);
+        rootLogger.info("order: " + order);
         rootLogger.info("pageNumber: " + pageNumber);
         rootLogger.info("pageSize: " + pageSize);
-        return playerService.listWithPagination(pageNumber,pageSize).getContent();
+        return playerService.listWithPagination(name, title, race, profession, after, before, banned, minExperience, maxExperience, minLevel, maxLevel, order, pageNumber, pageSize).getContent();
     }
 }
