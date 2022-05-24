@@ -30,18 +30,18 @@ public class PlayersController {
 
     @GetMapping("/players")
     @ResponseBody
-    public List<Player> helloPage(@RequestParam String name,
-                                  @RequestParam String title,
-                                  @RequestParam Race race,
-                                  @RequestParam Profession profession,
-                                  @RequestParam Long after,
-                                  @RequestParam Long before,
-                                  @RequestParam Boolean banned,
-                                  @RequestParam Integer minExperience,
-                                  @RequestParam Integer maxExperience,
-                                  @RequestParam Integer minLevel,
-                                  @RequestParam Integer maxLevel,
-                                  @RequestParam PlayerOrder order,
+    public List<Player> helloPage(@RequestParam(required = false) String name,
+                                  @RequestParam(required = false) String title,
+                                  @RequestParam(required = false) Race race,
+                                  @RequestParam(required = false) Profession profession,
+                                  @RequestParam(required = false) Long after,
+                                  @RequestParam(required = false) Long before,
+                                  @RequestParam(required = false) Boolean banned,
+                                  @RequestParam(required = false) Integer minExperience,
+                                  @RequestParam(required = false) Integer maxExperience,
+                                  @RequestParam(required = false) Integer minLevel,
+                                  @RequestParam(required = false) Integer maxLevel,
+                                  @RequestParam(required = false) PlayerOrder order,
                                   @RequestParam(defaultValue = "0") int pageNumber,
                                   @RequestParam(defaultValue = "3") int pageSize) {
         rootLogger.info("name: " + name);
