@@ -14,4 +14,36 @@ public class SearchCriteria {
         this.operation = operation;
     }
 
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    public void setValue(Object value) {
+        this.value = value;
+    }
+
+    public void setOperation(SearchOperation operation) {
+        this.operation = operation;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public Object getValue() {
+        return value;
+    }
+
+    public SearchOperation getOperation() {
+        return operation;
+    }
+
+    @Override
+    public String toString() {
+        return "SearchCriteria{" +
+                "key='" + key + '\'' +
+                ", value=" + value +
+                ", operation=" + operation +
+                '}';
+    }
 }
