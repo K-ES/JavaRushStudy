@@ -47,7 +47,7 @@ public class GetAllTest extends AbstractTest {
     //test2
     @Test
     public void getAllWithFiltersNamePageNumber() throws Exception {
-        ResultActions resultActions = mockMvc.perform(get("/rest/players?name=ра&pageNumber=1"))
+        ResultActions resultActions = mockMvc.perform(get("/rest/players?name=Э&pageNumber=1"))
                 .andExpect(status().isOk());
 
         MvcResult result = resultActions.andReturn();
