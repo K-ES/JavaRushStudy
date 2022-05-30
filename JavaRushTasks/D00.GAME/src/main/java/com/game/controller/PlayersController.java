@@ -58,6 +58,6 @@ public class PlayersController {
         rootLogger.info("order: " + order);
         rootLogger.info("pageNumber: " + pageNumber);
         rootLogger.info("pageSize: " + pageSize);
-        return playerService.listWithPagination(name, title, race, profession, after, before, banned, minExperience, maxExperience, minLevel, maxLevel, order, pageNumber, pageSize);
+        return playerService.listWithPagination(name, title, race, profession, after, before, banned, minExperience, maxExperience, minLevel, maxLevel, order, pageNumber, pageSize).getContent();
     }
 }

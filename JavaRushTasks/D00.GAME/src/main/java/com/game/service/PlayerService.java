@@ -34,7 +34,7 @@ public class PlayerService {
         return repo.findAll();
     }
 
-    public List<Player> listWithPagination(
+    public Page<Player> listWithPagination(
             String name,
             String title,
             Race race,
@@ -58,7 +58,7 @@ public class PlayerService {
             rootLogger.info("name не пустой аргумент " + name);
             playerSpecification.add(new SearchCriteria("name", name, SearchOperation.MATCH));
         }
-        List<Player> resultList = repo.findAll(playerSpecification);
+        Page<Player> resultList = repo.findAll(playerSpecification, PageRequest.of(pageNumber, pageSize));
 
 
 
