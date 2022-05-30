@@ -51,12 +51,29 @@ public class PlayerService {
             int pageSize
             ) {
         rootLogger.info("listWithPagination start");
+        rootLogger.info("name" + name);
+        rootLogger.info("title" + title);
+        rootLogger.info("race" + race);
+        rootLogger.info("profession" + profession);
+        rootLogger.info("after" + after);
+        rootLogger.info("before" + before);
+        rootLogger.info("banned" + banned);
+        rootLogger.info("minExperience" + minExperience);
+        rootLogger.info("maxExperience" + maxExperience);
+        rootLogger.info("minLevel" + minLevel);
+        rootLogger.info("maxLevel" + maxLevel);
+        rootLogger.info("order" + order);
+        rootLogger.info("pageNumber" + pageNumber);
+        rootLogger.info("pageSize" + pageSize);
+
 
         PlayerSpecification playerSpecification = new PlayerSpecification();
 
         if (name != null) {
-            rootLogger.info("name не пустой аргумент " + name);
             playerSpecification.add(new SearchCriteria("name", name, SearchOperation.MATCH));
+        }
+        if (title != null) {
+            playerSpecification.add(new SearchCriteria("title", title, SearchOperation.MATCH));
         }
         Page<Player> resultList = repo.findAll(playerSpecification, PageRequest.of(pageNumber, pageSize));
 
