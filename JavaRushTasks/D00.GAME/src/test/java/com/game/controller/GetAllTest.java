@@ -41,6 +41,8 @@ public class GetAllTest extends AbstractTest {
         List<PlayerInfoTest> actual = mapper.readValue(contentAsString, typeReference);
         List<PlayerInfoTest> expected = testsHelper.getPlayerInfosByPage(0, 3,
                 testsHelper.getAllPlayers());
+        rootLogger.info("actual: " + actual);
+        rootLogger.info("expected: " + expected);
         assertEquals("Возвращается не правильный результат при запросе GET /rest/players.", expected, actual);
     }
 
