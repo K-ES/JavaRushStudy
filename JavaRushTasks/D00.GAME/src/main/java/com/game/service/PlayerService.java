@@ -51,8 +51,8 @@ public class PlayerService {
             int pageSize
             ) {
         rootLogger.info("listWithPagination start");
-        rootLogger.info("name" + name);
-        rootLogger.info("title" + title);
+        rootLogger.info("name1" + name);
+        rootLogger.info("title1" + title);
         rootLogger.info("race" + race);
         rootLogger.info("profession" + profession);
         rootLogger.info("after" + after);
@@ -73,7 +73,13 @@ public class PlayerService {
             playerSpecification.add(new SearchCriteria("name", name, SearchOperation.MATCH));
         }
         if (title != null) {
-            playerSpecification.add(new SearchCriteria("title123", title, SearchOperation.MATCH));
+            playerSpecification.add(new SearchCriteria("title", title, SearchOperation.MATCH));
+        }
+        if (race != null) {
+            playerSpecification.add(new SearchCriteria("race", race, SearchOperation.MATCH));
+        }
+        if (profession != null) {
+            playerSpecification.add(new SearchCriteria("profession", profession, SearchOperation.MATCH));
         }
         Page<Player> resultList = repo.findAll(playerSpecification, PageRequest.of(pageNumber, pageSize));
 

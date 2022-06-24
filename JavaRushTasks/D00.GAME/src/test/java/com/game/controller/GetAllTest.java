@@ -39,7 +39,7 @@ public class GetAllTest extends AbstractTest {
 
         rootLogger.info("contentAsString: " + contentAsString);
         List<PlayerInfoTest> actual = mapper.readValue(contentAsString, typeReference);
-        List<PlayerInfoTest> expected = testsHelper.getPlayerInfosByPage(1, 3,
+        List<PlayerInfoTest> expected = testsHelper.getPlayerInfosByPage(0, 3,
                 testsHelper.getAllPlayers());
         rootLogger.info("actual: " + actual);
         rootLogger.info("expected: " + expected);

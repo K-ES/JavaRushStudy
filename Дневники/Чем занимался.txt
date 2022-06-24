@@ -1,3 +1,8 @@
+2022-06-24 07:51:23 Словил ошибку
+					org.springframework.web.util.NestedServletException: Request processing failed; nested exception is org.springframework.dao.InvalidDataAccessApiUsageException: Parameter value [%warrior%] did not match expected type [com.game.entity.Profession (n/a)]; nested exception is java.lang.IllegalArgumentException: Parameter value [%warrior%] did not match expected type [com.game.entity.Profession (n/a)]
+					at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+					at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+					
 2022-06-24 06:04:01 Нашел документацию по настройке логирования для hibernate. Позже добавлю страницу
 					Затем перешел на настройку логирования через log4j2.xml при этом увидел странное сообщение в начале логирования
 					2022-06-24 06:05:14,248 main ERROR Invalid status level specified: . Defaulting to ERROR.
