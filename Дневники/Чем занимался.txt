@@ -1,3 +1,4 @@
+2022-06-24 07:55:05 Окончание сессии
 2022-06-24 07:51:23 Словил ошибку
 					org.springframework.web.util.NestedServletException: Request processing failed; nested exception is org.springframework.dao.InvalidDataAccessApiUsageException: Parameter value [%warrior%] did not match expected type [com.game.entity.Profession (n/a)]; nested exception is java.lang.IllegalArgumentException: Parameter value [%warrior%] did not match expected type [com.game.entity.Profession (n/a)]
 					at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
