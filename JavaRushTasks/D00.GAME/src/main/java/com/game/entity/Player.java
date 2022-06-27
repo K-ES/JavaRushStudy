@@ -12,6 +12,7 @@ public class Player {
     private Long id;
     private String name;
     private String title;
+    @Enumerated(EnumType.STRING)
     private String race;
     @Enumerated(EnumType.STRING)
     private Profession profession;
