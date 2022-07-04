@@ -1,3 +1,23 @@
+2022-07-04 08:18:42 Окончание сессии
+2022-07-04 07:42:56 Победил форматирование SQL. 
+					1 Способ: через hibernate.properties
+					Прописать:
+						hibernate.format_sql=true
+						hibernate.use_sql_comments=true
+						hibernate.generate_statistics=true
+					2 Способ: 	
+						em.setJpaProperties(additionalProperties());
+						Где 
+					    private Properties additionalProperties() {
+							Properties properties = new Properties();
+							properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
+							properties.setProperty("hibernate.format_sql", "true");
+							properties.setProperty("hibernate.use_sql_comments", "true");
+							properties.setProperty("hibernate.generate_statistics", "true");
+							return properties;
+						}
+					Если определить оба способа, то setJpaProperties имеет более высокий приоритет. 
+
 2022-07-04 06:22:17 Старт сессии 
 2022-06-30 08:12:21 Окончание сессии. Не победил свойства)
 2022-06-30 07:26:37 Старт сессии.
