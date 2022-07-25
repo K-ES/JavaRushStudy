@@ -12,7 +12,8 @@ public class Player {
     private Long id;
     private String name;
     private String title;
-    private String race;
+    @Enumerated(EnumType.STRING)
+    private Race race;
     @Enumerated(EnumType.STRING)
     private Profession profession;
     private Integer experience;
@@ -89,11 +90,11 @@ public class Player {
         return title;
     }
 
-    public String getRace() {
+    public Race getRace() {
         return race;
     }
 
-    public void setRace(String race) {
+    public void setRace(Race race) {
         this.race = race;
     }
 

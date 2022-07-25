@@ -75,6 +75,12 @@ public class PlayerService {
         if (title != null) {
             playerSpecification.add(new SearchCriteria("title", title, SearchOperation.MATCH));
         }
+        if (race != null) {
+            playerSpecification.add(new SearchCriteria("race", race, SearchOperation.EQUAL));
+        }
+        if (profession != null) {
+            playerSpecification.add(new SearchCriteria("profession", profession, SearchOperation.EQUAL));
+        }
         Page<Player> resultList = repo.findAll(playerSpecification, PageRequest.of(pageNumber, pageSize));
 
 
