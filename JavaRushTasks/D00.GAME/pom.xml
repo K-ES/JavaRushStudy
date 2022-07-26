@@ -56,6 +56,12 @@
         <!--        Если удалить все зависимости, то их еще необходимо будет удалять из репозитория .m2, только так можно "сломать проект"-->
         <!--        Затем я начал снова добавлять по одной. Добавил одну, увидел, что скачалось несколько библиотек.-->
         <!--        Это случилось, потому что есть внутренние зависимости, которые видну внутри самих библиотек-->
+        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-jpa -->
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-starter-data-jpa</artifactId>-->
+<!--            <version>2.7.1</version>-->
+<!--        </dependency>-->
 
         <dependency>
             <groupId>org.springframework</groupId>
