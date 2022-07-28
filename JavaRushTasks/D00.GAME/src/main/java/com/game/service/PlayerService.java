@@ -81,6 +81,12 @@ public class PlayerService {
         if (profession != null) {
             playerSpecification.add(new SearchCriteria("profession", profession, SearchOperation.EQUAL));
         }
+        if (banned != null) {
+            playerSpecification.add(new SearchCriteria("banned", banned, SearchOperation.EQUAL));
+        }
+        if (maxLevel != null) {
+            playerSpecification.add(new SearchCriteria("level", maxLevel, SearchOperation.LESS_THAN_EQUAL));
+        }
         Page<Player> resultList = repo.findAll(playerSpecification, PageRequest.of(pageNumber, pageSize));
 
 
