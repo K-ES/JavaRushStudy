@@ -1,5 +1,6 @@
 package com.game.service;
 
+import java.util.Date;
 import java.util.List;
 
 import com.game.controller.PlayerOrder;
@@ -87,11 +88,23 @@ public class PlayerService {
         if (maxLevel != null) {
             playerSpecification.add(new SearchCriteria("level", maxLevel, SearchOperation.LESS_THAN_EQUAL));
         }
+        if (minExperience != null) {
+            playerSpecification.add(new SearchCriteria("experience", minExperience, SearchOperation.GREATER_THAN_EQUAL));
+        }
+        if (maxExperience != null) {
+            playerSpecification.add(new SearchCriteria("experience", maxExperience, SearchOperation.LESS_THAN_EQUAL));
+        }
+        // TODO скорректировать вызов, чтобы не возникало исключения
+        if (after != null) {
+            playerSpecification.add(new SearchCriteria("birthday", new Date(), SearchOperation.GREATER_THAN_EQUAL));
+        }
+//        if (before != null) {
+//            playerSpecification.add(new SearchCriteria("birthday", before, SearchOperation.LESS_THAN_EQUAL));
+//        }
         Page<Player> resultList = repo.findAll(playerSpecification, PageRequest.of(pageNumber, pageSize));
 
 
-
-        return resultList;
+       return resultList;
     }
 
     public Player get(Long id) {
