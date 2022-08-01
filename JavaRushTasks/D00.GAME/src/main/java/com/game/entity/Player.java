@@ -16,7 +16,7 @@ public class Player {
     private Integer experience;
     private Integer level;
     private Integer untilNextLevel;
-    private Date birthday;
+    private Date birthday; // проблемное поле
     private Boolean banned;
 
     public void setExperience(Integer experience) {

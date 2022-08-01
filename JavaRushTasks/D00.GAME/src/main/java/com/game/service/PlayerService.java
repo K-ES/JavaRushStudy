@@ -96,7 +96,10 @@ public class PlayerService {
         }
         // TODO скорректировать вызов, чтобы не возникало исключения
         if (after != null) {
-            playerSpecification.add(new SearchCriteria("birthday", new Date(), SearchOperation.GREATER_THAN_EQUAL));
+//            Date startDate = Date.from("2018-04-08T11:02:44".atZone(ZoneId.systemDefault()).toInstant());
+            playerSpecification.add(new SearchCriteria("1", "1", SearchOperation.EQUAL));
+
+//            playerSpecification.add(new SearchCriteria("birthday", new Date().toString(), SearchOperation.GREATER_THAN_EQUAL));
         }
 //        if (before != null) {
 //            playerSpecification.add(new SearchCriteria("birthday", before, SearchOperation.LESS_THAN_EQUAL));
