@@ -163,9 +163,7 @@ public class GetAllTest extends AbstractTest {
     public void getAllWithFiltersAfterBeforeMinExperienceMaxExperience() throws Exception {
         //after 00:00 01.01.2005
         //before 00:00 01.01.2009
-//        ResultActions resultActions = mockMvc.perform(get("/rest/players?after=1104530400000&before=1230760800000&minExperience=30000&maxExperience=100000&pageNumber=1"))
-//                .andExpect(status().isOk());
-        ResultActions resultActions = mockMvc.perform(get("/rest/players?after=1104530400000&pageNumber=1"))
+        ResultActions resultActions = mockMvc.perform(get("/rest/players?after=1104530400000&before=1230760800000&minExperience=30000&maxExperience=100000&pageNumber=1"))
                 .andExpect(status().isOk());
 
         MvcResult result = resultActions.andReturn();

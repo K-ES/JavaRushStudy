@@ -33,7 +33,6 @@ public class PlayerSpecification implements Specification<Player> {
             if (criteria.getOperation().equals(SearchOperation.GREATER_THAN)) {
                 predicates.add(builder.greaterThan(
                         root.get(criteria.getKey()), criteria.getValue().toString()));
-
             } else if (criteria.getOperation().equals(SearchOperation.LESS_THAN)) {
                 predicates.add(builder.lessThan(
                         root.get(criteria.getKey()), criteria.getValue().toString()));
@@ -47,8 +46,8 @@ public class PlayerSpecification implements Specification<Player> {
                 predicates.add(builder.notEqual(
                         root.get(criteria.getKey()), criteria.getValue()));
             } else if (criteria.getOperation().equals(SearchOperation.EQUAL)) {
-//                predicates.add(builder.equal(root.get(criteria.getKey()), criteria.getValue()));
-                predicates.add(builder.equal(root.get("name"), "1"));
+                predicates.add(builder.equal(
+                        root.get(criteria.getKey()), criteria.getValue()));
             } else if (criteria.getOperation().equals(SearchOperation.MATCH)) {
                 predicates.add(builder.like(
                         builder.lower(root.get(criteria.getKey())),
