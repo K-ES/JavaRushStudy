@@ -96,11 +96,11 @@ public class PlayerService {
         }
         // TODO скорректировать вызов, чтобы не возникало исключения
         if (after != null) {
-            playerSpecification.add(new SearchCriteria("birthday", new Date(), SearchOperation.GREATER_THAN_EQUAL));
+            playerSpecification.add(new SearchCriteria("birthday", after, SearchOperation.DATE_GREATER_THAN_EQUAL));
         }
-//        if (before != null) {
-//            playerSpecification.add(new SearchCriteria("birthday", before, SearchOperation.LESS_THAN_EQUAL));
-//        }
+        if (before != null) {
+            playerSpecification.add(new SearchCriteria("birthday", before, SearchOperation.DATE_LESS_THAN_EQUAL));
+      }
         Page<Player> resultList = repo.findAll(playerSpecification, PageRequest.of(pageNumber, pageSize));
 
 

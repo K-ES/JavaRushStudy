@@ -8,6 +8,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class PlayerSpecification implements Specification<Player> {
@@ -33,15 +34,27 @@ public class PlayerSpecification implements Specification<Player> {
             if (criteria.getOperation().equals(SearchOperation.GREATER_THAN)) {
                 predicates.add(builder.greaterThan(
                         root.get(criteria.getKey()), criteria.getValue().toString()));
+            } else if (criteria.getOperation().equals(SearchOperation.DATE_GREATER_THAN)) {
+                predicates.add(builder.greaterThan(
+                        root.get(criteria.getKey()), new Date(criteria.getValue())));
             } else if (criteria.getOperation().equals(SearchOperation.LESS_THAN)) {
                 predicates.add(builder.lessThan(
                         root.get(criteria.getKey()), criteria.getValue().toString()));
+            } else if (criteria.getOperation().equals(SearchOperation.DATE_LESS_THAN)) {
+                predicates.add(builder.lessThan(
+                        root.get(criteria.getKey()), new Date()));
             } else if (criteria.getOperation().equals(SearchOperation.GREATER_THAN_EQUAL)) {
                 predicates.add(builder.greaterThanOrEqualTo(
                         root.get(criteria.getKey()), criteria.getValue().toString()));
+            } else if (criteria.getOperation().equals(SearchOperation.DATE_GREATER_THAN_EQUAL)) {
+                predicates.add(builder.greaterThanOrEqualTo(
+                        root.get(criteria.getKey()), new Date()));
             } else if (criteria.getOperation().equals(SearchOperation.LESS_THAN_EQUAL)) {
                 predicates.add(builder.lessThanOrEqualTo(
                         root.get(criteria.getKey()), criteria.getValue().toString()));
+            } else if (criteria.getOperation().equals(SearchOperation.DATE_LESS_THAN_EQUAL)) {
+                predicates.add(builder.lessThanOrEqualTo(
+                        root.get(criteria.getKey()), new Date()));
             } else if (criteria.getOperation().equals(SearchOperation.NOT_EQUAL)) {
                 predicates.add(builder.notEqual(
                         root.get(criteria.getKey()), criteria.getValue()));
