@@ -1,3 +1,23 @@
+2022-08-02 07:17:19 Я победил проблему :) getAllWithFiltersAfterBeforeMinExperienceMaxExperience
+					В двух словах: 
+					SearchCriteria - мой личный класс, который ни от кого не наследуется, он содержит один фильтр:
+						-поле
+						-значение (как объект)
+						-операция сравнения
+						При rest запросе нам кидают несколько параметров, на базе этих параметров надо создать фильтры на таблицу
+						1. При rest запросе мы вызываем контроллер PlayersController.PlayersList
+						2. Он в свою очередь содержит private сервис и вызывает playerService.listWithPagination
+						3. Сервис в свою очередь содериж PlayerRepository repo, и взывает у него repo.findAll(playerSpecification, PageRequest.of(pageNumber, pageSize));
+						   Но! только потому, что PlayerRepository имплементирует JpaSpecificationExecutor\
+						4. Благодаря этому можно вызывать repo.findAll(playerSpecification, PageRequest.of(pageNumber, pageSize)),
+						   Где подавать Спецификацию, т.е. нечто, что имплементирует Specification<Player>
+						5. А уже наш класс PlayerSpecification внутри содержит лист критериев, пробегает по ним и добавляет их в список Предикатов
+						6. Дальше уже PlayerSpecification возвращает по методу toPredicate, который улетает в findAll
+						
+					Проблема состояла в том, что в списке критериев фильтр на дату был сохранен с объектом LONG, далее при построении запроса в builder
+					в методы greaterThan lessThan greaterThanOrEqualTo lessThanOrEqualTo в зависимости от типа поля надо было передавать или дату или число
+					была попытка (неверная) на формирование с числом, а для даты, надо было из критерия получать сначала дату, а потом уже передавать в builder
+						
 2022-08-02 06:30:59 Изучаю спецификации по статье: https://reflectoring.io/spring-data-specifications/
 2022-08-02 06:03:36 Разбираю интерфейс Predicate
 2022-08-02 05:49:43 Старт сессии. 
