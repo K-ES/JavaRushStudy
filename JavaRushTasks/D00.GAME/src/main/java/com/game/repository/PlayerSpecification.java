@@ -34,27 +34,27 @@ public class PlayerSpecification implements Specification<Player> {
             if (criteria.getOperation().equals(SearchOperation.GREATER_THAN)) {
                 predicates.add(builder.greaterThan(
                         root.get(criteria.getKey()), criteria.getValue().toString()));
-            } else if (criteria.getOperation().equals(SearchOperation.DATE_GREATER_THAN)) {
+            } else if (criteria.getOperation().equals(SearchOperation.DATE_GREATER_THAN)) { // date
                 predicates.add(builder.greaterThan(
-                        root.get(criteria.getKey()), new Date(criteria.getValue())));
+                        root.get(criteria.getKey()), new Date(Long.parseLong(criteria.getValue().toString()))));
             } else if (criteria.getOperation().equals(SearchOperation.LESS_THAN)) {
                 predicates.add(builder.lessThan(
                         root.get(criteria.getKey()), criteria.getValue().toString()));
-            } else if (criteria.getOperation().equals(SearchOperation.DATE_LESS_THAN)) {
+            } else if (criteria.getOperation().equals(SearchOperation.DATE_LESS_THAN)) { // date
                 predicates.add(builder.lessThan(
-                        root.get(criteria.getKey()), new Date()));
+                        root.get(criteria.getKey()), new Date(Long.parseLong(criteria.getValue().toString()))));
             } else if (criteria.getOperation().equals(SearchOperation.GREATER_THAN_EQUAL)) {
                 predicates.add(builder.greaterThanOrEqualTo(
                         root.get(criteria.getKey()), criteria.getValue().toString()));
-            } else if (criteria.getOperation().equals(SearchOperation.DATE_GREATER_THAN_EQUAL)) {
+            } else if (criteria.getOperation().equals(SearchOperation.DATE_GREATER_THAN_EQUAL)) { // date
                 predicates.add(builder.greaterThanOrEqualTo(
-                        root.get(criteria.getKey()), new Date()));
+                        root.get(criteria.getKey()), new Date(Long.parseLong(criteria.getValue().toString()))));
             } else if (criteria.getOperation().equals(SearchOperation.LESS_THAN_EQUAL)) {
                 predicates.add(builder.lessThanOrEqualTo(
                         root.get(criteria.getKey()), criteria.getValue().toString()));
-            } else if (criteria.getOperation().equals(SearchOperation.DATE_LESS_THAN_EQUAL)) {
+            } else if (criteria.getOperation().equals(SearchOperation.DATE_LESS_THAN_EQUAL)) { // date
                 predicates.add(builder.lessThanOrEqualTo(
-                        root.get(criteria.getKey()), new Date()));
+                        root.get(criteria.getKey()), new Date(Long.parseLong(criteria.getValue().toString()))));
             } else if (criteria.getOperation().equals(SearchOperation.NOT_EQUAL)) {
                 predicates.add(builder.notEqual(
                         root.get(criteria.getKey()), criteria.getValue()));
