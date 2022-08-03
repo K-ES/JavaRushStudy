@@ -35,39 +35,17 @@ public class PlayerService {
         return repo.findAll();
     }
 
-    public Page<Player> listWithPagination(
-            String name,
-            String title,
-            Race race,
-            Profession profession,
-            Long after,
-            Long before,
-            Boolean banned,
-            Integer minExperience,
-            Integer maxExperience,
-            Integer minLevel,
-            Integer maxLevel,
-            PlayerOrder order,
-            int pageNumber,
-            int pageSize
-            ) {
-        rootLogger.info("listWithPagination start");
-        rootLogger.info("name" + name);
-        rootLogger.info("title" + title);
-        rootLogger.info("race" + race);
-        rootLogger.info("profession" + profession);
-        rootLogger.info("after" + after);
-        rootLogger.info("before" + before);
-        rootLogger.info("banned" + banned);
-        rootLogger.info("minExperience" + minExperience);
-        rootLogger.info("maxExperience" + maxExperience);
-        rootLogger.info("minLevel" + minLevel);
-        rootLogger.info("maxLevel" + maxLevel);
-        rootLogger.info("order" + order);
-        rootLogger.info("pageNumber" + pageNumber);
-        rootLogger.info("pageSize" + pageSize);
-
-
+    private PlayerSpecification generateSpecification(String name,
+                                 String title,
+                                 Race race,
+                                 Profession profession,
+                                 Long after,
+                                 Long before,
+                                 Boolean banned,
+                                 Integer minExperience,
+                                 Integer maxExperience,
+                                 Integer minLevel,
+                                 Integer maxLevel) {
         PlayerSpecification playerSpecification = new PlayerSpecification();
 
         if (name != null) {
@@ -101,8 +79,58 @@ public class PlayerService {
         }
         if (before != null) {
             playerSpecification.add(new SearchCriteria("birthday", before, SearchOperation.DATE_LESS_THAN_EQUAL));
-      }
-        Page<Player> resultList = repo.findAll(playerSpecification, PageRequest.of(pageNumber, pageSize));
+        }
+        return     playerSpecification;
+    }
+
+    public Long playersCount(String name,
+                                String title,
+                                Race race,
+                                Profession profession,
+                                Long after,
+                                Long before,
+                                Boolean banned,
+                                Integer minExperience,
+                                Integer maxExperience,
+                                Integer minLevel,
+                                Integer maxLevel) {
+        return repo.count(generateSpecification(name, title, race, profession, after, before, banned, minExperience, maxExperience, minLevel, maxLevel));
+    }
+
+    public Page<Player> listWithPagination(
+            String name,
+            String title,
+            Race race,
+            Profession profession,
+            Long after,
+            Long before,
+            Boolean banned,
+            Integer minExperience,
+            Integer maxExperience,
+            Integer minLevel,
+            Integer maxLevel,
+            PlayerOrder order,
+            int pageNumber,
+            int pageSize
+            ) {
+        rootLogger.info("listWithPagination start");
+        rootLogger.info("name" + name);
+        rootLogger.info("title" + title);
+        rootLogger.info("race" + race);
+        rootLogger.info("profession" + profession);
+        rootLogger.info("after" + after);
+        rootLogger.info("before" + before);
+        rootLogger.info("banned" + banned);
+        rootLogger.info("minExperience" + minExperience);
+        rootLogger.info("maxExperience" + maxExperience);
+        rootLogger.info("minLevel" + minLevel);
+        rootLogger.info("maxLevel" + maxLevel);
+        rootLogger.info("order" + order);
+        rootLogger.info("pageNumber" + pageNumber);
+        rootLogger.info("pageSize" + pageSize);
+
+
+        Page<Player> resultList = repo.findAll(generateSpecification(name, title, race, profession, after, before, banned, minExperience, maxExperience, minLevel, maxLevel), PageRequest.of(pageNumber, pageSize));
 
 
        return resultList;

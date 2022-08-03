@@ -17,7 +17,8 @@ public class GetCountTest extends AbstractTest {
     private final TestsHelper testsHelper = new TestsHelper();
 
     //test1
-    // TODO Реализовать код для метода
+    // TO DO Реализовать код для метода
+    // Реализовано. На базе старого кода. Все красиво переиспользовано.
     @Test
     public void getCountWithoutFiltersReturnAllPlayers() throws Exception {
         ResultActions resultActions = this.mockMvc.perform(get("/rest/players/count")
