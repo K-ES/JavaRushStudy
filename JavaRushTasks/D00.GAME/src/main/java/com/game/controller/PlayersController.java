@@ -55,4 +55,6 @@ public class PlayersController {
         rootLogger.info("pageSize: " + pageSize);
         return playerService.listWithPagination(name, title, race, profession, after, before, banned, minExperience, maxExperience, minLevel, maxLevel, order, pageNumber, pageSize).getContent();
     }
+
+
 }
