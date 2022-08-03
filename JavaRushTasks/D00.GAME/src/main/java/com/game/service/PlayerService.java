@@ -94,7 +94,8 @@ public class PlayerService {
         if (maxExperience != null) {
             playerSpecification.add(new SearchCriteria("experience", maxExperience, SearchOperation.LESS_THAN_EQUAL));
         }
-        // TODO скорректировать вызов, чтобы не возникало исключения
+        // TO DO скорректировать вызов, чтобы не возникало исключения
+        // Корректировка была в PlayerSpecification.java
         if (after != null) {
             playerSpecification.add(new SearchCriteria("birthday", after, SearchOperation.DATE_GREATER_THAN_EQUAL));
         }

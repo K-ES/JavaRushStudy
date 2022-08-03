@@ -16,6 +16,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class CreatePlayerTest extends AbstractTest {
 
     //test1
+    // TODO Реализовать код для успешного тестирования
     @Test
     public void createPlayerEmptyBodyTest() throws Exception {
         mockMvc.perform(post("/rest/players/")
