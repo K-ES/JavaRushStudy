@@ -1,6 +1,5 @@
 package com.game.service;
 
-import java.util.Date;
 import java.util.List;
 
 import com.game.controller.PlayerOrder;
@@ -18,7 +17,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Service
 @Transactional
@@ -27,11 +25,19 @@ public class PlayerService {
     @Autowired
     PlayerRepository repo;
 
-    public void save(Player player) {
+    public Player save(Player player) {
+        List<Player> tmpListPlayer = listAll();
+        Long MaxValue = 0L;
+        for (Player p : tmpListPlayer) {
+            if (p.getId() > MaxValue) MaxValue = p.getId();
+        }
+        player.setId(++MaxValue);
+
         Double r =(Math.sqrt(2500 + 200 * player.getExperience()) - 50) / 100;
         player.setLevel(r.intValue());
         player.setUntilNextLevel(50 * (player.getLevel() + 1) * (player.getLevel() + 2) - player.getExperience());
         repo.save(player);
+        return player;
     }
 
     public List<Player> listAll() {
