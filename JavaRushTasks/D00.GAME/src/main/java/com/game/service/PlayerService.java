@@ -28,6 +28,9 @@ public class PlayerService {
     PlayerRepository repo;
 
     public void save(Player player) {
+        Double r =(Math.sqrt(2500 + 200 * player.getExperience()) - 50) / 100;
+        player.setLevel(r.intValue());
+        player.setUntilNextLevel(50 * (player.getLevel() + 1) * (player.getLevel() + 2) - player.getExperience());
         repo.save(player);
     }
 

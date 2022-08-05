@@ -6,7 +6,6 @@ import java.util.Date;
 @Entity
 public class Player {
     @Id
-//    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private String name;
     private String title;
@@ -103,4 +102,5 @@ public class Player {
     public void setProfession(Profession profession) {
         this.profession = profession;
     }
+
 }

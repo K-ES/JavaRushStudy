@@ -61,7 +61,12 @@ public class PlayersController {
     @ResponseBody
     public Player PostPlayer(@RequestBody Player player)
     {
-        player.setId(102L);
+        List<Player> tmpListPlayer = playerService.listAll();
+        Long MaxValue = 0L;
+        for (Player p : tmpListPlayer) {
+            if (p.getId() > MaxValue) MaxValue = p.getId();
+        }
+        player.setId(++MaxValue);
         playerService.save(player);
         return player;
     }
