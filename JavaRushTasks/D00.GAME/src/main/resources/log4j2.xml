@@ -23,20 +23,20 @@
     </Appenders>
     <Loggers>
 
-        <Logger name="org.hibernate.SQL" level="fatal" additivity="false">
+        <Logger name="org.hibernate.SQL" level="error" additivity="false">
             <AppenderRef ref="Console"/>
         </Logger>
-        <Logger name="org.hibernate.type.descriptor.sql" level="fatal" additivity="false">
+        <Logger name="org.hibernate.type.descriptor.sql" level="error" additivity="false">
             <AppenderRef ref="Console"/>
         </Logger>
-        <Logger name="org.hibernate.stat" level="fatal" additivity="false">
+        <Logger name="org.hibernate.stat" level="error" additivity="false">
             <AppenderRef ref="Console"/>
         </Logger>
-        <Logger name="org.hibernate.cache" level="fatal" additivity="false">
+        <Logger name="org.hibernate.cache" level="error" additivity="false">
             <AppenderRef ref="Console"/>
         </Logger>
 
-        <Root level="FATAL">
+        <Root level="ERROR">
             <AppenderRef ref="Console"/>
             <AppenderRef ref="File"/>
         </Root>

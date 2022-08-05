@@ -60,26 +60,12 @@ public class PlayersController {
         return playerService.playersCount(name, title, race, profession, after, before, banned, minExperience, maxExperience, minLevel, maxLevel);
     }
 
-    @PostMapping(value = "/players", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseBody
-    public ResponseEntity<Player> PostPlayer(@RequestBody Player player)
+//    @PostMapping(value = "/players", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/players", consumes = MediaType.TEXT_PLAIN_VALUE)
+//    @ResponseBody
+    public String PostPlayer(@RequestBody String str)
     {
-        if (
-                player.getName() == null ||
-                        player.getTitle() == null ||
-                        player.getRace() == null ||
-                        player.getProfession() == null ||
-                        player.getBirthday() == null ||
-                        player.getExperience() == null
-        ) return new ResponseEntity<Player>(HttpStatus.BAD_REQUEST);
-
-        if (player.getName().length() > 12) return new ResponseEntity<Player>(HttpStatus.BAD_REQUEST);
-        if (player.getTitle().length() > 30) return new ResponseEntity<Player>(HttpStatus.BAD_REQUEST);
-        // TODO Проверить на отрицательность json birthday long
-
-        Player tmpPlayer = playerService.save(player);
-        return new ResponseEntity<Player>(tmpPlayer, HttpStatus.BAD_REQUEST);
-
+        return str;
     }
 
 
