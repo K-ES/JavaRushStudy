@@ -19,6 +19,8 @@ public class PlayersController {
     @Autowired
     private PlayerService playerService;
 
+
+
     @GetMapping("/players")
     @ResponseBody
     public List<Player> PlayersList(@RequestParam(required = false) String name,
@@ -59,6 +61,7 @@ public class PlayersController {
     @ResponseBody
     public Player PostPlayer(@RequestBody Player player)
     {
+        playerService.save(player);
         return player;
     }
 
