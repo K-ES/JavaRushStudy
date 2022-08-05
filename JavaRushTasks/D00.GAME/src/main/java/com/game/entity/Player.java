@@ -6,7 +6,7 @@ import java.util.Date;
 @Entity
 public class Player {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+//    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private String name;
     private String title;

@@ -61,6 +61,7 @@ public class PlayersController {
     @ResponseBody
     public Player PostPlayer(@RequestBody Player player)
     {
+        player.setId(102L);
         playerService.save(player);
         return player;
     }
