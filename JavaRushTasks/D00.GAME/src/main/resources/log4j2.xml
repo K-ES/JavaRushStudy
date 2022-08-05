@@ -2,7 +2,8 @@
 <Configuration status="ERROR">
     <Properties>
         <Property name="basePath">logs</Property>
-        <Property name="basePattern">%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n</Property>
+<!--        <Property name="basePattern">%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n</Property>-->
+        <Property name="basePattern">[%t] %-5level - %msg%n</Property>
     </Properties>
 
     <Appenders>
@@ -36,7 +37,7 @@
             <AppenderRef ref="Console"/>
         </Logger>
 
-        <Root level="ERROR">
+        <Root level="TRACE">
             <AppenderRef ref="Console"/>
             <AppenderRef ref="File"/>
         </Root>

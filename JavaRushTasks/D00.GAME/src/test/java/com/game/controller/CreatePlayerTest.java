@@ -66,8 +66,8 @@ public class CreatePlayerTest extends AbstractTest {
     @Test
     public void createPlayerTest() throws Exception {
         ResultActions resultActions = mockMvc.perform(post("/rest/players/")
-                .contentType(MediaType.TEXT_PLAIN_VALUE)
-                .content("testtest"))
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("testtest3"))
                 .andExpect(status().isOk());
 
 //        PlayerInfoTest expected = new PlayerInfoTest(41L, "Амарылис", "Прозелит", Race.DWARF, Profession.CLERIC, 988059600000L, true, 63986, 35, 2614);

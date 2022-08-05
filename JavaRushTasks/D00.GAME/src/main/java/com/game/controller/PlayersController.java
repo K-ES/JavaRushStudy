@@ -61,10 +61,11 @@ public class PlayersController {
     }
 
 //    @PostMapping(value = "/players", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    @PostMapping(value = "/players", consumes = MediaType.TEXT_PLAIN_VALUE)
+    @PostMapping(value = "/players")
 //    @ResponseBody
     public String PostPlayer(@RequestBody String str)
     {
+        System.err.println("testtesttest");
         return str;
     }
 
