@@ -22,7 +22,6 @@ import java.util.List;
 @ComponentScan("com.game")
 public class WebConfig implements WebMvcConfigurer {
 
-
     @Bean
     public ViewResolver internalResourceViewResolver() {
         InternalResourceViewResolver bean = new InternalResourceViewResolver();
@@ -44,6 +43,9 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
+        // если эту штуку ниже закомментировать, то по-умолчанию будет много конвертеров
+        // хотя, конечно, странно, что простое добавление рушит то, что там есть по-умолчанию.
+        // некогда разбираться, потом покопаюсь
 //        MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
 //        converter.getObjectMapper().setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.NONE);
 //        converter.getObjectMapper().setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);

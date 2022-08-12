@@ -6,15 +6,18 @@ import com.game.entity.Race;
 import com.game.controller.utils.PlayerInfoTest;
 import com.game.controller.utils.TestsHelper;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.ResultActions;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 
 import static org.springframework.test.util.AssertionErrors.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 public class CreatePlayerTest extends AbstractTest {
-
+    @Autowired
+    WebMvcConfigurationSupport mvcConfigurationSupport;
     //test1
     // TO DO Реализовать код для успешного тестирования
     // Реализовано. Теперь надо проверить на отрицательность дату рождения именно через json
