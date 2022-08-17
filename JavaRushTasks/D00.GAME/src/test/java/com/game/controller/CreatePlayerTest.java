@@ -18,6 +18,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class CreatePlayerTest extends AbstractTest {
     @Autowired
     WebMvcConfigurationSupport mvcConfigurationSupport;
+
     //test1
     // TO DO Реализовать код для успешного тестирования
     // Реализовано. Теперь надо проверить на отрицательность дату рождения именно через json
@@ -69,7 +70,7 @@ public class CreatePlayerTest extends AbstractTest {
     @Test
     public void createPlayerTest() throws Exception {
         ResultActions resultActions = mockMvc.perform(post("/rest/players/")
-                .contentType(MediaType.TEXT_PLAIN)
+                .contentType(MediaType.APPLICATION_JSON)
                 .content("testtest3"))
                 .andExpect(status().isOk());
 

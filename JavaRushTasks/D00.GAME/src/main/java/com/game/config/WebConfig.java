@@ -2,16 +2,17 @@ package com.game.config;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.servlet.ViewResolver;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
@@ -21,6 +22,7 @@ import java.util.List;
 @EnableWebMvc
 @ComponentScan("com.game")
 public class WebConfig implements WebMvcConfigurer {
+    public static Logger logger = LogManager.getRootLogger();
 
     @Bean
     public ViewResolver internalResourceViewResolver() {
@@ -43,12 +45,14 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
-        // если эту штуку ниже закомментировать, то по-умолчанию будет много конвертеров
-        // хотя, конечно, странно, что простое добавление рушит то, что там есть по-умолчанию.
-        // некогда разбираться, потом покопаюсь
+        logger.fatal("configureMessageConverters start");
+        logger.fatal(converters.toString());
 //        MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
 //        converter.getObjectMapper().setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.NONE);
 //        converter.getObjectMapper().setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
 //        converters.add(converter);
+        converters.add(new StringHttpMessageConverter());
+        logger.fatal(converters.toString());
+        logger.fatal("configureMessageConverters end");
     }
 }

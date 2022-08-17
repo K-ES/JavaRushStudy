@@ -7,18 +7,21 @@ import com.game.service.PlayerService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 
 import java.util.List;
 
 @Controller
 @RequestMapping("/rest")
 public class PlayersController {
+    private static final Logger logger = LogManager.getRootLogger();
+    @Autowired
+    WebMvcConfigurationSupport mvcConfigurationSupport;
+
+
+
     @Autowired
     private PlayerService playerService;
 
@@ -63,10 +66,14 @@ public class PlayersController {
 //    @PostMapping(value = "/players", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @PostMapping(value = "/players")
 //    @ResponseBody
-    public String PostPlayer(@RequestBody String str)
+    public String PostPlayer(
+           @RequestBody String str
+    )
     {
-        System.err.println("testtesttest");
-        return str;
+        logger.fatal("PostPlayer start");
+        System.err.println("@RequestBody String str test");
+        logger.fatal("PostPlayer end");
+        return null;
     }
 
 
