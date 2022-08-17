@@ -62,6 +62,7 @@ public class TestsHelper {
                     "\"name\": \"Амарылис\"," +
                     "\"title\":\"Прозелит\"," +
                     "\"race\": \"HUMAN\"," +
+                    "\"profession\": \"CLERIC\"," +
                     "\"birthday\" : -988059600000," +
                     "\"banned\":false," +
                     "\"experience\": 63986" +

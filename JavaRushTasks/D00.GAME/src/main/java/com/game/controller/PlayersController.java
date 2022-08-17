@@ -10,6 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
@@ -63,19 +67,28 @@ public class PlayersController {
         return playerService.playersCount(name, title, race, profession, after, before, banned, minExperience, maxExperience, minLevel, maxLevel);
     }
 
-//    @PostMapping(value = "/players", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    @PostMapping(value = "/players")
-//    @ResponseBody
-    public String PostPlayer(
-           @RequestBody String str
-    )
+    @PostMapping(value = "/players", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public ResponseEntity<Player> PostPlayer(@RequestBody Player player)
     {
-        logger.fatal("PostPlayer start");
-        System.err.println("@RequestBody String str test");
-        logger.fatal("PostPlayer end");
-        return null;
-    }
+        if (
+                player.getName() == null ||
+                        player.getTitle() == null ||
+                        player.getRace() == null ||
+                        player.getProfession() == null ||
+                        player.getBirthday() == null ||
+                        player.getExperience() == null
+        ) return new ResponseEntity<Player>(HttpStatus.BAD_REQUEST);
 
+        if (player.getName().length() > 12) return new ResponseEntity<Player>(HttpStatus.BAD_REQUEST);
+        if (player.getTitle().length() > 30) return new ResponseEntity<Player>(HttpStatus.BAD_REQUEST);
+        if (player.getExperience() < 0) return new ResponseEntity<Player>(HttpStatus.BAD_REQUEST);
+        if (player.getExperience() > 10000000) return new ResponseEntity<Player>(HttpStatus.BAD_REQUEST);
+        // TODO Проверить на отрицательность json birthday long
+
+        Player tmpPlayer = playerService.save(player);
+        return new ResponseEntity<Player>(tmpPlayer, HttpStatus.OK);
+    }
 
 
 }
