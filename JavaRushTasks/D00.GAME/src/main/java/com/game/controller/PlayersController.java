@@ -69,6 +69,14 @@ public class PlayersController {
 
     @PostMapping(value = "/players", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
+    /**
+     * Создание игрока.
+     * Надо было сделать проверку на Long в JSON. Но происходит автоматическая конвертация на уровне Spring, и я
+     * "не успеваю" как схватить long, или не знаю, как это сделать. Дополнительно его считывать отдельно не хочется,
+     * хотя может это и правильно. Пока оставлю на аровне проверки даты. Дальше посмотрим.
+     * Был долгий квест на то, как проверять года. Нехотелось брать код. Прошил магические числа 2000г и 3000г
+     * Не очень хорошо. Пусть научат правильно
+     */
     public ResponseEntity<Player> PostPlayer(@RequestBody Player player)
     {
         if (
@@ -84,7 +92,9 @@ public class PlayersController {
         if (player.getTitle().length() > 30) return new ResponseEntity<Player>(HttpStatus.BAD_REQUEST);
         if (player.getExperience() < 0) return new ResponseEntity<Player>(HttpStatus.BAD_REQUEST);
         if (player.getExperience() > 10000000) return new ResponseEntity<Player>(HttpStatus.BAD_REQUEST);
-        // TODO Проверить на отрицательность json birthday long
+        if (player.getBirthday().getTime() < 0) return new ResponseEntity<Player>(HttpStatus.BAD_REQUEST);
+        if (player.getBirthday().getTime() < 946684800000L) return new ResponseEntity<Player>(HttpStatus.BAD_REQUEST);  // 2000г костыль
+        if (player.getBirthday().getTime() > 32503680000000L) return new ResponseEntity<Player>(HttpStatus.BAD_REQUEST);// 3000г костыль
 
         Player tmpPlayer = playerService.save(player);
         return new ResponseEntity<Player>(tmpPlayer, HttpStatus.OK);

@@ -57,6 +57,7 @@ public class TestsHelper {
                     "\"experience\": 63986" +
                     "}";
 
+    // TO DO корректировка JSON в тестировании
     public static final String NEGATIVE_BIRTHDAY_JSON =
             "{" +
                     "\"name\": \"Амарылис\"," +
@@ -64,6 +65,7 @@ public class TestsHelper {
                     "\"race\": \"HUMAN\"," +
                     "\"profession\": \"CLERIC\"," +
                     "\"birthday\" : -988059600000," +
+//                    "\"birthday\" : X," +
                     "\"banned\":false," +
                     "\"experience\": 63986" +
                     "}";
