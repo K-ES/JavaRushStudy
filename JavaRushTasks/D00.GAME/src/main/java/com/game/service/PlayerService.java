@@ -40,6 +40,10 @@ public class PlayerService {
         return player;
     }
 
+    public Player update(Player player) {
+        return new Player();
+    }
+
     public List<Player> listAll() {
         return repo.findAll();
     }

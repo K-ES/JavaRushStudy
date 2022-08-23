@@ -54,7 +54,7 @@ public class PlayersController {
         try {
             Long l = Long.parseLong(id);
             if (l <= 0) return new ResponseEntity<Player>(HttpStatus.BAD_REQUEST);
-            return new ResponseEntity<>(playerService.get(l), HttpStatus.OK);
+            return new ResponseEntity<Player>(playerService.get(l), HttpStatus.OK);
         } catch (NumberFormatException e) {
             return new ResponseEntity<Player>(HttpStatus.BAD_REQUEST);
         } catch (NoSuchElementException e) {
@@ -112,5 +112,48 @@ public class PlayersController {
 
         Player tmpPlayer = playerService.save(player);
         return new ResponseEntity<Player>(tmpPlayer, HttpStatus.OK);
+    }
+
+    @PostMapping(value = "/players/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Player> PostById(@PathVariable String id, @RequestBody Player newPlayer) {
+//        logger.error(newPlayerJson);
+        logger.error(newPlayer);
+        // TODO пока пишу костыль, не совсем ясно, как правильно делать. Я автоматически преобразую json в объект через spring JPA
+        // при этом мне надо проверить json на пустоту
+//        if (newPlayer.getName() == null
+//                && newPlayer.getTitle() == null
+//                && newPlayer.getRace() == null
+//                && newPlayer.getProfession() == null
+//                && newPlayer.getBirthday() == null
+//                && newPlayer.getBanned() == null
+//                && newPlayer.getExperience() == null
+//        ) return new ResponseEntity<Player>(HttpStatus.OK);
+
+        if (newPlayer.getBirthday() != null && newPlayer.getBirthday().getTime() < 0) return new ResponseEntity<Player>(HttpStatus.BAD_REQUEST);
+        if (newPlayer.getExperience() != null && newPlayer.getExperience() < 0) return new ResponseEntity<Player>(HttpStatus.BAD_REQUEST);
+        if (newPlayer.getExperience() != null && newPlayer.getExperience() > 10000000) return new ResponseEntity<Player>(HttpStatus.BAD_REQUEST);
+
+        try {
+            Long l = Long.parseLong(id);
+            if (l <= 0) return new ResponseEntity<Player>(HttpStatus.BAD_REQUEST);
+            Player oldPlayer = playerService.get(l);
+
+            oldPlayer.setName(newPlayer.getName());
+            oldPlayer.setTitle(newPlayer.getTitle());
+            oldPlayer.setRace(newPlayer.getRace());
+            oldPlayer.setProfession(newPlayer.getProfession());
+            oldPlayer.setBirthday(newPlayer.getBirthday());
+            oldPlayer.setBanned(newPlayer.getBanned());
+            oldPlayer.setExperience(newPlayer.getExperience());
+
+            playerService.save(oldPlayer);
+            return new ResponseEntity<Player>(playerService.get(l), HttpStatus.OK);
+        } catch (NumberFormatException e) {
+            return new ResponseEntity<Player>(HttpStatus.BAD_REQUEST);
+        } catch (NoSuchElementException e) {
+            return new ResponseEntity<Player>(HttpStatus.NOT_FOUND);
+        } catch (NullPointerException e) {
+            return new ResponseEntity<Player>(HttpStatus.NOT_FOUND);
+        }
     }
 }
