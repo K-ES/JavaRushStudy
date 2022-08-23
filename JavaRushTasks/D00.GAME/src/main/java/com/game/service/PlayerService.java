@@ -26,12 +26,14 @@ public class PlayerService {
     PlayerRepository repo;
 
     public Player save(Player player) {
-        List<Player> tmpListPlayer = listAll();
-        Long MaxValue = 0L;
-        for (Player p : tmpListPlayer) {
-            if (p.getId() > MaxValue) MaxValue = p.getId();
+        if (player.getId() == null) {
+            List<Player> tmpListPlayer = listAll();
+            Long MaxValue = 0L;
+            for (Player p : tmpListPlayer) {
+                if (p.getId() > MaxValue) MaxValue = p.getId();
+            }
+            player.setId(++MaxValue);
         }
-        player.setId(++MaxValue);
 
         Double r =(Math.sqrt(2500 + 200 * player.getExperience()) - 50) / 100;
         player.setLevel(r.intValue());

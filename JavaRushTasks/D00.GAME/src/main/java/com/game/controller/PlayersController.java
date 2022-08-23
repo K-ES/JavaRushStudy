@@ -138,16 +138,16 @@ public class PlayersController {
             if (l <= 0) return new ResponseEntity<Player>(HttpStatus.BAD_REQUEST);
             Player oldPlayer = playerService.get(l);
 
-            oldPlayer.setName(newPlayer.getName());
-            oldPlayer.setTitle(newPlayer.getTitle());
-            oldPlayer.setRace(newPlayer.getRace());
-            oldPlayer.setProfession(newPlayer.getProfession());
-            oldPlayer.setBirthday(newPlayer.getBirthday());
-            oldPlayer.setBanned(newPlayer.getBanned());
-            oldPlayer.setExperience(newPlayer.getExperience());
+            if (newPlayer.getName() != null)                oldPlayer.setName(newPlayer.getName());
+            if (newPlayer.getTitle() != null)  oldPlayer.setTitle(newPlayer.getTitle());
+            if (newPlayer.getRace() != null)  oldPlayer.setRace(newPlayer.getRace());
+            if (newPlayer.getProfession() != null)  oldPlayer.setProfession(newPlayer.getProfession());
+            if (newPlayer.getBirthday() != null)  oldPlayer.setBirthday(newPlayer.getBirthday());
+            if (newPlayer.getBanned() != null) oldPlayer.setBanned(newPlayer.getBanned());
+            if (newPlayer.getExperience() != null) oldPlayer.setExperience(newPlayer.getExperience());
 
             playerService.save(oldPlayer);
-            return new ResponseEntity<Player>(playerService.get(l), HttpStatus.OK);
+            return new ResponseEntity<Player>(oldPlayer, HttpStatus.OK);
         } catch (NumberFormatException e) {
             return new ResponseEntity<Player>(HttpStatus.BAD_REQUEST);
         } catch (NoSuchElementException e) {
