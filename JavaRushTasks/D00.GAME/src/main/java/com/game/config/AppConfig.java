@@ -80,9 +80,6 @@ public class AppConfig {
     private Properties additionalProperties() {
         Properties properties = new Properties();
         properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
-//        properties.setProperty("hibernate.format_sql", "false");
-//        properties.setProperty("hibernate.use_sql_comments", "false");
-//        properties.setProperty("hibernate.generate_statistics", "false");
         return properties;
     }
 }

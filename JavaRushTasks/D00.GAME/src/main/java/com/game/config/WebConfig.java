@@ -45,14 +45,13 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
-//        logger.fatal("configureMessageConverters start");
-//        logger.fatal(converters.toString());
+        logger.trace("configureMessageConverters start");
+        logger.trace(converters.toString());
         MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
         converter.getObjectMapper().setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.NONE);
         converter.getObjectMapper().setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
         converters.add(converter);
-//        converters.add(new StringHttpMessageConverter());
-//        logger.fatal(converters.toString());
-//        logger.fatal("configureMessageConverters end");
+        logger.trace(converters.toString());
+        logger.trace("configureMessageConverters end");
     }
 }
