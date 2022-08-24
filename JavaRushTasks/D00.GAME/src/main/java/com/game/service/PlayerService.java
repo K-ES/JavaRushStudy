@@ -15,6 +15,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -128,25 +129,11 @@ public class PlayerService {
             int pageNumber,
             int pageSize
             ) {
-        rootLogger.info("listWithPagination start");
-        rootLogger.info("name" + name);
-        rootLogger.info("title" + title);
-        rootLogger.info("race" + race);
-        rootLogger.info("profession" + profession);
-        rootLogger.info("after" + after);
-        rootLogger.info("before" + before);
-        rootLogger.info("banned" + banned);
-        rootLogger.info("minExperience" + minExperience);
-        rootLogger.info("maxExperience" + maxExperience);
-        rootLogger.info("minLevel" + minLevel);
-        rootLogger.info("maxLevel" + maxLevel);
-        rootLogger.info("order" + order);
-        rootLogger.info("pageNumber" + pageNumber);
-        rootLogger.info("pageSize" + pageSize);
 
 
-        Page<Player> resultList = repo.findAll(generateSpecification(name, title, race, profession, after, before, banned, minExperience, maxExperience, minLevel, maxLevel), PageRequest.of(pageNumber, pageSize));
+        if (order == null) order = PlayerOrder.ID;
 
+        Page<Player> resultList = repo.findAll(generateSpecification(name, title, race, profession, after, before, banned, minExperience, maxExperience, minLevel, maxLevel), PageRequest.of(pageNumber, pageSize, Sort.by(order.getFieldName())));
 
        return resultList;
     }
