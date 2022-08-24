@@ -156,4 +156,20 @@ public class PlayersController {
             return new ResponseEntity<Player>(HttpStatus.NOT_FOUND);
         }
     }
+
+    @DeleteMapping(value = "/players/{id}")
+    public ResponseEntity<Player> DeleteById(@PathVariable String id) {
+        try {
+            Long l = Long.parseLong(id);
+            if (l <= 0) return new ResponseEntity<Player>(HttpStatus.BAD_REQUEST);
+            Player p = playerService.get(l);
+            playerService.delete(l);
+            return new ResponseEntity<Player>(HttpStatus.OK);
+        } catch (NumberFormatException e) {
+            return new ResponseEntity<Player>(HttpStatus.BAD_REQUEST);
+        } catch (NoSuchElementException e) {
+            return new ResponseEntity<Player>(HttpStatus.NOT_FOUND);
+        }
+    }
+
 }
