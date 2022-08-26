@@ -1,4 +1,14 @@
-// TODO 24.08.2022 Необходимо оптимизировать проверку по id, она есть везде, где передается id. Надо схлопнуть красиво несколько одинаковых кусков кода
+
+/*
+ * 24.08.2022 Необходимо оптимизировать проверку по id, она есть везде, где передается id. Надо схлопнуть красиво несколько одинаковых кусков кода
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ */
 
 package com.game.controller;
 
@@ -6,6 +16,7 @@ import com.game.entity.Player;
 import com.game.entity.Profession;
 import com.game.entity.Race;
 import com.game.service.PlayerService;
+import com.game.service.PlayerServiceValidation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -162,15 +173,10 @@ public class PlayersController {
     @DeleteMapping(value = "/players/{id}")
     public ResponseEntity<Player> DeleteById(@PathVariable String id) {
         try {
-            Long l = Long.parseLong(id);
-            if (l <= 0) return new ResponseEntity<Player>(HttpStatus.BAD_REQUEST);
-            Player p = playerService.get(l);
-            playerService.delete(l);
-            return new ResponseEntity<Player>(HttpStatus.OK);
-        } catch (NumberFormatException e) {
+            return playerService.delete(PlayerServiceValidation.getLong(id));
+        }
+        catch (Exception e) {
             return new ResponseEntity<Player>(HttpStatus.BAD_REQUEST);
-        } catch (NoSuchElementException e) {
-            return new ResponseEntity<Player>(HttpStatus.NOT_FOUND);
         }
     }
 

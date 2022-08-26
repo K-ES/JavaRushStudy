@@ -1,6 +1,7 @@
 package com.game.service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import com.game.controller.PlayerOrder;
 import com.game.entity.Player;
@@ -16,6 +17,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -142,7 +145,14 @@ public class PlayerService {
         return repo.findById(id).get();
     }
 
-    public void delete(Long id) {
-        repo.deleteById(id);
+
+    public ResponseEntity delete(Long id) {
+        try {
+            Player tmpPlayer = get(id);
+            repo.delete(tmpPlayer);
+            return new ResponseEntity<Player>(HttpStatus.OK);
+        } catch (NoSuchElementException e) {
+            return new ResponseEntity<Player>(HttpStatus.NOT_FOUND);
+        }
     }
 }
