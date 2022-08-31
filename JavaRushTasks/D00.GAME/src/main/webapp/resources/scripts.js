@@ -415,7 +415,7 @@ function processCreate(root) {
 }
 
 function processDelete(root, id) {
-    // Delete(root + "/rest/players/" + id);
+    Delete(root + "/rest/players/" + id);
     processSearch(root, 1);
 }
 
