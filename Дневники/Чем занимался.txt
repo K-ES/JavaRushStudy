@@ -1,3 +1,19 @@
+2022-10-13 17:15:50 Понял, как подключиться к запущенному "в левом месте" tomcat-у. Двигаюсь дальше.
+					Последние две строчки.
+					-Dcatalina.home=C:\Program Files\Apache Software Foundation\Tomcat 9.0
+					-Dcatalina.base=C:\Program Files\Apache Software Foundation\Tomcat 9.0
+					-Djava.io.tmpdir=C:\Program Files\Apache Software Foundation\Tomcat 9.0\temp
+					-Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+					-Djava.util.logging.config.file=C:\Program Files\Apache Software Foundation\Tomcat 9.0\conf\logging.properties
+					
+					-Xdebug
+					-agentlib:jdwp=transport=dt_socket,address=8000,server=y,suspend=n
+
+2022-10-13 16:02:28 Переношу мавен в другую директорию и буду пробовать цепляться извне к дебагеру.
+2022-10-13 14:56:54 Накатываю дальше патчи и запускаю tomcat.
+2022-10-13 09:55:00 Приступил к lesson1 и начал накатывать патчи. 
+2022-10-12 11:59:46 Накат патча OP2. Анализ решения.
+2022-10-11 18:00:56 Окончание анализа видео от Григория.
 2022-10-11 16:37:45 Завершил анализ сложного видео https://www.youtube.com/watch?v=_0c9Fd9FacU
 2022-10-11 11:00:15 Завершил анализ простой видяшки. Перешел на старую сложную.
 2022-10-11 09:39:29 Снова вернулся к ковариантности и контрвариантности. 
