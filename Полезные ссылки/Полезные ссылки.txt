@@ -1,5 +1,0 @@
-Аннотации:
-https://topjava.ru/blog/rukovodstvo-po-annotatsiyam-v-java-i-mekhanizmu-ikh-raboty
-
-Spring
-https://amigoscode.com/p/spring-boot
